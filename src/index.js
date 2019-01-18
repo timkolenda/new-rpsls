@@ -10,9 +10,9 @@ import Scoreboard from './Scoreboard';
 import options from './options';
 
 class App extends Component {
-    // state = {
+    state = {
 
-    // }
+    }
 
 
     render() {
