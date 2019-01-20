@@ -1,7 +1,5 @@
 import firebase from 'firebase';
 
-
-
 const config = {
     apiKey: "AIzaSyCr6cQFXFwCYl7-ClBTIAK6H6MhS6XNkC8",
     authDomain: "new-rpsls.firebaseapp.com",

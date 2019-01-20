@@ -10,7 +10,7 @@ import Scoreboard from './Scoreboard';
 import options from './options';
 import firebase from './firebase';
 
-const dbRef = firebase.database().ref('/');
+const dbRef = firebase.database().ref();
 
 class App extends Component {
     state = {
@@ -25,6 +25,13 @@ class App extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.addNewPlayerToFireBase();
+        console.log('submitted');
+    }
+
+    formSubmit = () => {
+        console.log('click');
+        // this.handleSubmit();
+        console.log(document.querySelector('#newPlayerCreationForm').value());
     }
 
     addNewPlayerToFireBase = () => {
@@ -34,6 +41,10 @@ class App extends Component {
         }
         dbRef.push(newPlayer);
     }
+
+    // handleClick = (callBack) => {
+    //     callBack();
+    // }
 
     
 
@@ -47,6 +58,8 @@ class App extends Component {
                     <Login 
                         playerName={this.state.playerName}
                         handleChange={this.handleChange}
+                        formSubmit={this.formSubmit}
+                        handleSubmit={this.handleSubmit}
                     /> )}/>
                     <Route path="/game" render={(props) => ( <Game /> )}/>
                     <Route path="/rules" render={(props) => ( <Rules /> )}/>
