@@ -8,18 +8,46 @@ import Rules from './Rules';
 import Scoreboard from './Scoreboard';
 
 import options from './options';
+import firebase from './firebase';
+
+const dbRef = firebase.database().ref('/');
 
 class App extends Component {
     state = {
-
+        playerName: "",
+        score: 0
     }
+
+    handleChange = (e) => {
+        this.setState({ [e.target.id]: e.target.value });
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.addNewPlayerToFireBase();
+    }
+
+    addNewPlayerToFireBase = () => {
+        const newPlayer = {
+            name: this.state.playerName,
+            score: this.state.score
+        }
+        dbRef.push(newPlayer);
+    }
+
+    
+
 
 
     render() {
         return (
             <Router>
                 <div className="app">
-                    <Route exact path="/" render={(props) => ( <Login /> )}/>
+                    <Route exact path="/" render={(props) => ( 
+                    <Login 
+                        playerName={this.state.playerName}
+                        handleChange={this.handleChange}
+                    /> )}/>
                     <Route path="/game" render={(props) => ( <Game /> )}/>
                     <Route path="/rules" render={(props) => ( <Rules /> )}/>
                     <Route path="/scoreboard" render={(props) => ( <Scoreboard /> )}/>
