@@ -4,15 +4,12 @@ import Button from './Button';
 
 const Login = (props) => {
     return (
-        <div className="login">
-            <div>This is the login page</div>
+        <div className="Login">
             <h2>RPSLS</h2>
             <form action="#" id="newPlayerCreationForm" onSubmit={props.handleSubmit} >
                 <label htmlFor="playerName">Please enter your nickname!</label>
                 <input type="text" id="playerName" value={props.playerName} onChange={props.handleChange} />
-                <button>
-                    <Button destination='game' onClickAction={props.formSubmit} />
-                </button>
+                <Button destination='game' onClickAction={props.formSubmit} />
             </form>
             <Button destination='rules' />
         </div>
