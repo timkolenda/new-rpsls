@@ -16,7 +16,7 @@ class Login extends Component {
         if (this.state.toGame === true){
             return <Redirect to={'/game'} />
         }
-
+        
         return (
             <div className="Login">
                 <h2>RPSLS</h2>
