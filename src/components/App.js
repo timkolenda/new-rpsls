@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 
 import Login from './Login';
 import Game from './Game';
@@ -22,31 +22,18 @@ class App extends Component {
         this.setState({ [e.target.id]: e.target.value });
     }
 
-    handleSubmit = (e) => {
+    handleNewPlayerFormSubmit = (e) => {
         e.preventDefault();
-        this.addNewPlayerToFireBase();
-        console.log('submitted');
+        this.addNewPlayerToFirebase();
     }
 
-    formSubmit = () => {
-        console.log('click');
-        // this.handleSubmit();
-        console.log(document.querySelector('#newPlayerCreationForm').value());
-    }
-
-    addNewPlayerToFireBase = () => {
+    addNewPlayerToFirebase = () => {
         const newPlayer = {
             name: this.state.playerName,
             score: this.state.score
         }
         dbRef.push(newPlayer);
     }
-
-    // handleClick = (callBack) => {
-    //     callBack();
-    // }
-
-    
 
 
 
@@ -58,8 +45,8 @@ class App extends Component {
                     <Login 
                         playerName={this.state.playerName}
                         handleChange={this.handleChange}
-                        formSubmit={this.formSubmit}
-                        handleSubmit={this.handleSubmit}
+                        handleNewPlayerFormSubmit={this.handleNewPlayerFormSubmit}
+                        addNewPlayerToFirebase={this.addNewPlayerToFirebase}
                     /> )}/>
                     <Route path="/game" render={(props) => ( <Game /> )}/>
                     <Route path="/rules" render={(props) => ( <Rules /> )}/>
