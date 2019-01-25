@@ -14,12 +14,27 @@ const dbRef = firebase.database().ref();
 
 class App extends Component {
     state = {
-        playerName: "",
-        score: 0
+        playerName: "Choose a nickname",
+        score: 0,
+        playerNameReady: false
     }
 
-    handleChange = (e) => {
-        this.setState({ [e.target.id]: e.target.value });
+    handleChange = (e, testValue) => {
+        this.setState({ [e.target.id]: e.target.value }, () => testValue());
+    }   
+
+    checkForPlayerNameReady = () => {
+        if (
+            this.state.playerName !== "Choose a nickname" 
+            && this.state.playerName !== "" 
+            && this.state.playerName !== " "
+            && this.state.playerName !== "  "
+            && this.state.playerName !== "   "  
+        ) {
+            this.setState({ playerNameReady: true });
+        } else {
+            this.setState({ playerNameReady: false });
+        }
     }
 
     handleNewPlayerFormSubmit = (e) => {
@@ -35,7 +50,7 @@ class App extends Component {
         dbRef.push(newPlayer);
     }
 
-
+    
 
     render() {
         return (
@@ -44,9 +59,11 @@ class App extends Component {
                     <Route exact path="/" render={(props) => ( 
                     <Login 
                         playerName={this.state.playerName}
+                        playerNameReady={this.state.playerNameReady}
                         handleChange={this.handleChange}
                         handleNewPlayerFormSubmit={this.handleNewPlayerFormSubmit}
                         addNewPlayerToFirebase={this.addNewPlayerToFirebase}
+                        checkForPlayerNameReady={this.checkForPlayerNameReady}
                     /> )}/>
                     <Route path="/game" render={(props) => ( <Game /> )}/>
                     <Route path="/rules" render={(props) => ( <Rules /> )}/>

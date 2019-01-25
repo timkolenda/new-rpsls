@@ -8,3 +8,4 @@ const PlayerOptions = (props) => {
 
 
 export default PlayerOptions;
+    
