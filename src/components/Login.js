@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
-import SweetAlert from 'sweetalert-react';
-import swal from '@sweetalert/with-react';
-
-// import 'sweetalert/dist/sweetalert.css';
-// import 'node_modules/sweetalert/src/sweetalert.scss';
+import swal from 'sweetalert';
 
 import Button from './Button';
 
@@ -12,7 +8,6 @@ import Button from './Button';
 class Login extends Component {
     state = { 
         toGame: false, 
-        show: false 
     }
 
     handleSubmit = (e) => {
@@ -33,7 +28,7 @@ class Login extends Component {
     }
 
     displayInvalidPlayerNameMessage = () => {
-        this.setState({ show: true });
+        swal("Oops!", "Looks like you need to enter a valid Nick Name!", "error");
     }
 
 
@@ -45,12 +40,6 @@ class Login extends Component {
         
         return (
             <div className="Login">
-                <SweetAlert
-                    show={this.state.show}
-                    title="Demo"
-                    text={'hello world'}
-                    onConfirm={() => this.setState({ show: false })}
-                />
                 <h2>RPSLS</h2>
                 <form className="playerNameSubmissionForm" action="#"  onSubmit={this.handleSubmit} >
                     <label className="visuallyhidden" htmlFor="playerName">Please enter your nickname!</label>
