@@ -153,33 +153,31 @@ body {
 
 .Button {
   width: 100%; }
-
-.Button .button__link {
-  text-transform: uppercase;
-  padding: 13px 0;
-  border: none;
-  color: white;
-  background-color: #ee6055;
-  font-size: 2rem;
-  border-radius: 10px;
-  text-decoration: none;
-  width: 100%;
-  display: block; }
+  .Button .button__link {
+    text-transform: uppercase;
+    padding: 13px 0;
+    border: none;
+    color: white;
+    background-color: #ee6055;
+    font-size: 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    width: 100%;
+    display: block; }
 
 .Login .playerNameSubmissionForm {
   display: flex;
   flex-direction: column;
   align-items: center; }
-
-.Login .playerNameSubmissionForm__input {
-  width: 90%;
-  padding: 13px 50px;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 50px;
-  text-align: center;
-  margin-top: 15px;
-  font-size: 2rem; }
+  .Login .playerNameSubmissionForm__input {
+    width: 90%;
+    padding: 13px 50px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 2rem; }
 
 .Login .loginPageButtons {
   display: flex;
@@ -188,6 +186,5 @@ body {
   justify-content: space-between;
   height: 20vh;
   margin-top: 30px; }
-
-.Login .loginPageButtons__buttonContainer {
-  width: 90%; }
+  .Login .loginPageButtons__buttonContainer {
+    width: 90%; }
