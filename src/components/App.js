@@ -14,7 +14,7 @@ const dbRef = firebase.database().ref();
 
 class App extends Component {
     state = {
-        playerName: "Choose a nickname",
+        playerName: "Enter a nickname",
         score: 0,
         playerNameReady: false
     }
@@ -23,9 +23,10 @@ class App extends Component {
         this.setState({ [e.target.id]: e.target.value }, () => testValue());
     }   
 
+    //Passed in as argument 'testValue' in handleChange - called onChange in Login.js
     checkForPlayerNameReady = () => {
         if (
-            this.state.playerName !== "Choose a nickname" 
+            this.state.playerName !== "Enter a nickname" 
             && this.state.playerName !== "" 
             && this.state.playerName !== " "
             && this.state.playerName !== "  "

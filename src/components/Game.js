@@ -1,17 +1,25 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import PlayerOptions from './PlayerOptions';
+import PlayerOptionList from './PlayerOptionList';
 import CardDisplay from './CardDisplay';
 
+import options from './options';
 
-const Game = (props) => {
-    return (
-        <div className="Game">
-            <PlayerOptions />
-            <CardDisplay />
-        </div>
-    );
-};
+class Game extends Component {
+    state = { options }
+
+
+    render(){
+        return (
+            <div className="Game">
+                <PlayerOptionList options={options} />
+                <CardDisplay options={options} />
+            </div>
+        );
+    }
+}
+
+
 
 export default Game;
