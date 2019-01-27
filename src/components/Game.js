@@ -12,7 +12,7 @@ class Game extends Component {
 
     render(){
         return (
-            <div className="Game">
+            <div className="game">
                 <PlayerOptionList 
                     options={options} 
                     getPlayerChoice={this.props.getPlayerChoice}

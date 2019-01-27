@@ -18,7 +18,7 @@ const PlayerOptionList = ({ options, getPlayerChoice }) => {
 
 
     return (
-        <div>
+        <div className="playerOptionList">
             {renderPlayerOptions}
         </div>
     );

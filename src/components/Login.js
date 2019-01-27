@@ -39,7 +39,7 @@ class Login extends Component {
         }
         
         return (
-            <div className="Login">
+            <div className="login">
                 <h2>RPSLS</h2>
                 <form className="playerNameSubmissionForm" action="#"  onSubmit={this.handleSubmit} >
                     <label className="visuallyhidden" htmlFor="playerName">Please enter your nickname!</label>
