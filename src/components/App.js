@@ -15,13 +15,14 @@ const dbRef = firebase.database().ref();
 class App extends Component {
     state = {
         playerName: "Enter a nickname",
-        score: 0,
-        playerNameReady: false
+        playerNameReady: false,
+        playerChoice: "",
+        score: 0
     }
 
     handleChange = (e, testValue) => {
         this.setState({ [e.target.id]: e.target.value }, () => testValue());
-    }   
+    }
 
     //Passed in as argument 'testValue' in handleChange - called onChange in Login.js
     checkForPlayerNameReady = () => {
@@ -51,6 +52,10 @@ class App extends Component {
         dbRef.push(newPlayer);
     }
 
+    getPlayerChoice = (playerChoice) => {
+        this.setState({ playerChoice });
+    }
+
     
 
     render() {
@@ -66,7 +71,9 @@ class App extends Component {
                         addNewPlayerToFirebase={this.addNewPlayerToFirebase}
                         checkForPlayerNameReady={this.checkForPlayerNameReady}
                     /> )}/>
-                    <Route path="/game" render={(props) => ( <Game /> )}/>
+                    <Route path="/game" render={(props) => ( <Game 
+                        getPlayerChoice={this.getPlayerChoice}
+                    /> )}/>
                     <Route path="/rules" render={(props) => ( <Rules /> )}/>
                     <Route path="/scoreboard" render={(props) => ( <Scoreboard /> )}/>
                 </div>

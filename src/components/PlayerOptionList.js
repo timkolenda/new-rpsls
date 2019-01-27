@@ -3,11 +3,20 @@ import React, { Component } from "react";
 import PlayerOptionItem from './PlayerOptionItem';
 
 
-const PlayerOptionList = ({ options }) => {
+const PlayerOptionList = ({ options, getPlayerChoice }) => {
     const renderPlayerOptions = options.map((option) => {
-            return <PlayerOptionItem />
+            return (
+                <PlayerOptionItem
+                    image={option.img}
+                    alt={option.alt}
+                    type={option.type}
+                    getPlayerChoice={getPlayerChoice}                    
+                />
+            );
+                
         });
-    
+
+
     return (
         <div>
             {renderPlayerOptions}

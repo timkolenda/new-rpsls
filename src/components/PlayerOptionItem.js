@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 
-const PlayerOptionItem = (props) => {
+const PlayerOptionItem = ({ image, alt, type, getPlayerChoice }) => {
     return (
-    <div>PlayerOption</div>
+    <button onClick={() => getPlayerChoice(type)}>
+        <div>
+            <img src={image} alt={alt} />
+        </div>
+    </button>
     );
 }
 

@@ -13,7 +13,10 @@ class Game extends Component {
     render(){
         return (
             <div className="Game">
-                <PlayerOptionList options={options} />
+                <PlayerOptionList 
+                    options={options} 
+                    getPlayerChoice={this.props.getPlayerChoice}
+                />
                 <CardDisplay options={options} />
             </div>
         );
