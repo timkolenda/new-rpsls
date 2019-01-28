@@ -2,10 +2,10 @@ import React, { Component } from "react";
 
 import Card from './Card';
 
-const CardDisplay = (props) => {
+const CardDisplay = ({ playerCardFlipped }) => {
     return (
         <div className="cardDisplay">
-            <Card />
+            <Card playerCardFlipped={playerCardFlipped}/>
             <Card />
         </div>
     );

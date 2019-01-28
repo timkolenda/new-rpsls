@@ -7,7 +7,23 @@ import CardDisplay from './CardDisplay';
 import options from './options';
 
 class Game extends Component {
-    state = { options }
+    state = { 
+        options, 
+        playerCardFlipped: false,
+        playerChoice: ''
+    }
+
+    getPlayerChoice = (playerChoice) => {
+        this.setState({ playerChoice });
+    }
+    
+    showCard = (card) => {
+        this.setState({ [card]: true });
+    }
+
+
+
+
 
 
     render(){
@@ -15,9 +31,13 @@ class Game extends Component {
             <div className="game">
                 <PlayerOptionList 
                     options={options} 
-                    getPlayerChoice={this.props.getPlayerChoice}
+                    getPlayerChoice={this.getPlayerChoice}
+                    showCard={this.showCard}
                 />
-                <CardDisplay options={options} />
+                <CardDisplay 
+                    options={options} 
+                    playerCardFlipped={this.state.playerCardFlipped}
+                />
             </div>
         );
     }

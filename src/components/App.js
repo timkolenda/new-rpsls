@@ -52,9 +52,6 @@ class App extends Component {
         dbRef.push(newPlayer);
     }
 
-    getPlayerChoice = (playerChoice) => {
-        this.setState({ playerChoice });
-    }
 
     
 
@@ -71,9 +68,7 @@ class App extends Component {
                         addNewPlayerToFirebase={this.addNewPlayerToFirebase}
                         checkForPlayerNameReady={this.checkForPlayerNameReady}
                     /> )}/>
-                    <Route path="/game" render={(props) => ( <Game 
-                        getPlayerChoice={this.getPlayerChoice}
-                    /> )}/>
+                    <Route path="/game" render={(props) => ( <Game /> )}/>
                     <Route path="/rules" render={(props) => ( <Rules /> )}/>
                     <Route path="/scoreboard" render={(props) => ( <Scoreboard /> )}/>
                 </div>
