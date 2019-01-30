@@ -4,7 +4,7 @@ const PlayerOptionItem = ({ image, alt, type, getPlayerChoice, showCard }) => {
     
     const handleClick = () => {
         getPlayerChoice(type);
-        showCard('playerCardFlipped');
+        showCard('player');
     }
     
     return (

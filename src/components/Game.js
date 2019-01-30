@@ -19,6 +19,7 @@ class Game extends Component {
     state = { 
         options, 
         playerCardFlipped: false,
+        compCardFlipped: false,
         playerChoice: '',
         compChoice: '',
         compChoiceNumber: '',
@@ -31,13 +32,18 @@ class Game extends Component {
         ]
     }
 
+    showCard = (cardHolder) => {
+        this.setState({ [`${cardHolder}CardFlipped`]: true });
+        console.log('running', cardHolder);
+    };
+    
     getPlayerChoice = (playerChoice) => this.setState({ playerChoice });
 
     getCompChoice = () => {
         let compChoiceNumber = Math.floor(Math.random() * this.state.compChoiceArray.length);
         const compChoice = Object.keys(this.state.compChoiceArray[compChoiceNumber])[0];
         this.setState({ compChoice, compChoiceNumber }, () => { this.spendCompCard()});
-        //play card here
+        this.showCard('comp');
     }
 
     spendCompCard = () => {
@@ -54,9 +60,6 @@ class Game extends Component {
         this.setState({ compchoiceArray: newArray });
     }
     
-    
-    
-    showCard = (card) => this.setState({ [card]: true });
     
 
 
@@ -76,6 +79,7 @@ class Game extends Component {
                     <CardDisplay 
                         options={options} 
                         playerCardFlipped={this.state.playerCardFlipped}
+                        compCardFlipped={this.state.compCardFlipped}
                     />
                 </div>
                 <button onClick={this.getCompChoice}>Play</button>
