@@ -151,9 +151,9 @@ body {
   background: #f4ebce;
   font-family: 'Open Sans', sans-serif; }
 
-.linkButton {
+.button {
   width: 100%; }
-  .linkButton .button__link {
+  .button .button__target {
     text-transform: uppercase;
     padding: 13px 0;
     border: none;
@@ -193,6 +193,8 @@ body {
   display: flex;
   flex-direction: column; }
   .game__cardArea {
+    display: flex; }
+  .game__actionArea {
     display: flex; }
 
 .playerOptionList {

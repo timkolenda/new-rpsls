@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const LinkButton = ({ destination, message }) => {
     return (
-        <div className="linkButton" >
-            <Link className="button__link" to={destination}>{message || destination} </Link>        
+        <div className="button" >
+            <Link className="button__target" to={destination}>{message || destination}</Link>        
         </div>
     );
 };

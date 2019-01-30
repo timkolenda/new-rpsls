@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
-const Card = ({ flipped }) => {
+const Card = ({ flipped, image }) => {
+
     return (
         <div className="card">
             <div className={`card__cardFlipper ${flipped ? 'card__cardFlipper--active' : ''}`}>
@@ -8,7 +9,7 @@ const Card = ({ flipped }) => {
                     <img src='' alt='' />
                 </div>
                 <div className={`card__display card__display--front`}>
-                    <img src='' alt='' />
+                    <img src={image} alt='' />
                 </div>
             </div>
         </div>

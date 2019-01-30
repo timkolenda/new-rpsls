@@ -51,8 +51,6 @@ class App extends Component {
         }
         dbRef.push(newPlayer);
     }
-
-
     
 
     render() {
