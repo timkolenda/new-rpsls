@@ -1,4 +1,8 @@
 
 .game {
     display: flex;
+    flex-direction: column;
+    &__cardArea {
+        display: flex;
+    }
 }

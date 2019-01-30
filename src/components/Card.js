@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 
-const Card = ({ playerCardFlipped }) => {
+const Card = ({ flipped }) => {
     return (
         <div className="card">
-            {playerCardFlipped ? 'flipped' : 'not flipped'}
-            <div className={`cards__cardFlipper ${playerCardFlipped ? 'cards__cardFlipper--active' : ''}`}>
-                <div className={`card__front`}>
+            <div className={`card__cardFlipper ${flipped ? 'card__cardFlipper--active' : ''}`}>
+                <div className={`card__display card__display--back`}>
                     <img src='' alt='' />
                 </div>
-                <div className={`card__back`}>
+                <div className={`card__display card__display--front`}>
                     <img src='' alt='' />
                 </div>
             </div>

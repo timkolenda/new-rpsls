@@ -5,7 +5,7 @@ import Card from './Card';
 const CardDisplay = ({ playerCardFlipped }) => {
     return (
         <div className="cardDisplay">
-            <Card playerCardFlipped={playerCardFlipped}/>
+            <Card flipped={playerCardFlipped}/>
             <Card />
         </div>
     );

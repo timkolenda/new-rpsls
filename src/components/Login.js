@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import swal from 'sweetalert';
 
-import Button from './Button';
+import LinkButton from './LinkButton';
 
 
 class Login extends Component {
@@ -47,10 +47,10 @@ class Login extends Component {
                 </form>
                 <div className="loginPageButtons">
                     <div className="loginPageButtons__buttonContainer" onClick={this.handleClick}>
-                        <Button destination={this.props.playerNameReady ? 'game' : '/'} message='Play Game'/>
+                        <LinkButton destination={this.props.playerNameReady ? 'game' : '/'} message='Play Game'/>
                     </div>
                     <div className="loginPageButtons__buttonContainer">
-                        <Button destination='rules' />
+                        <LinkButton destination='rules' />
                     </div>
                 </div>
                 
