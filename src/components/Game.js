@@ -32,6 +32,8 @@ class Game extends Component {
             { spock: 5 },
         ],
         cardImage: "",
+        playerCardImage: '',
+        compCardImage: '',
         playerWinCount: 0,
         compWinCount: 0,
         tieCount: 0,
@@ -41,12 +43,12 @@ class Game extends Component {
 
     showCard = (cardHolder) => this.setState({ [`${cardHolder}CardFlipped`]: true });
     
-    getPlayerChoice = (playerChoice) => this.setState({ playerChoice }, () => {this.getCardImage(this.state.playerChoice)});
+    getPlayerChoice = (playerChoice) => this.setState({ playerChoice }, () => {this.getCardImage(this.state.playerChoice, 'player')});
 
-    getCardImage = (choice) => {
+    getCardImage = (choice, cardHolder) => {
         const choiceObject = options.filter((option) => option.type === choice); 
         const cardImage = choiceObject[0].img;
-        this.setState({ cardImage });
+        this.setState({ [`${cardHolder}CardImage`]: cardImage });
     }
 
     getCompChoice = () => {
@@ -58,7 +60,7 @@ class Game extends Component {
 
     resolveSetCompChoice = () => {
         this.spendCompCard();
-        this.getCardImage(this.state.compChoice);
+        this.getCardImage(this.state.compChoice, 'comp');
     }
 
 
@@ -97,24 +99,24 @@ class Game extends Component {
                 this.setState({
                     playerWinCount: this.state.playerWinCount + 1,
                     roundResult: 'Round won!'
-                })
+                }, () => this.getTotalRounds());
             } else if (this.state.playerChoice === this.state.compChoice) {
                 this.setState({
                     tieCount: this.state.tieCount + 1,
                     roundResult: 'Round tied!'
-                })
+                }, () => this.getTotalRounds());
             } else {
                 this.setState({
                     compWinCount: this.state.compWinCount + 1,
                     roundResult: 'Round lost!'
-                })
+                }, () => this.getTotalRounds());
             }
         }
-        this.getTotalRounds();
     }
 
     getTotalRounds = () => {
-        const totalRounds = this.state.compWinCount + this.state.userWinCount + this.state.tieCount
+        const totalRounds = (this.state.compWinCount + this.state.playerWinCount + this.state.tieCount);
+        console.log('compWinCount', this.state.compWinCount, 'userWinCount', this.state.playerWinCount, 'tieCount', this.state.tieCount);
         this.setState({ totalRounds });
     };
     
@@ -140,7 +142,8 @@ class Game extends Component {
                         compCardFlipped={this.state.compCardFlipped}
                         playerChoice={this.state.playerChoice}
                         compChoice={this.state.compChoice}
-                        cardImage={this.state.cardImage}
+                        playerCardImage={this.state.playerCardImage}
+                        compCardImage={this.state.compCardImage}
                     />
                 </div>
                 <div className="game__actionArea">
