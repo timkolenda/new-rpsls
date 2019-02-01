@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import PlayerOptionList from './PlayerOptionList';
 import CardDisplay from './CardDisplay';
 import Button from './Button';
+import RoundResult from './RoundResult';
 
 import options from './options';
 import LinkButton from "./LinkButton";
@@ -68,7 +69,7 @@ class Game extends Component {
         const newArray = this.state.compChoiceArray;
         newArray[this.state.compChoiceNumber][this.state.compChoice]--;
         const cardsRemaining = newArray[this.state.compChoiceNumber][this.state.compChoice];
-        this.setState({ compchoiceArray:  newArray }, () => {this.resolveRound()});
+        this.setState({ compchoiceArray: newArray }, () => this.caluculateResult(this.state.playerChoice, this.state.compChoice));
         if (cardsRemaining === 0) {this.clearEmptyCardSlot()}; 
     }
 
@@ -78,11 +79,7 @@ class Game extends Component {
         this.setState({ compchoiceArray: newArray });
     }
     
-    resolveRound = () => {
-        setTimeout(() => {
-            this.caluculateResult(this.state.playerChoice, this.state.compChoice);
-        }, 1000);
-    }
+    
 
     caluculateResult = (playerChoice, compChoice) => {
         if (playerChoice && compChoice) {
@@ -98,27 +95,67 @@ class Game extends Component {
                 || ((playerChoice === "lizard") && (compChoice === "spock"))) {
                 this.setState({
                     playerWinCount: this.state.playerWinCount + 1,
-                    roundResult: 'Round won!'
-                }, () => this.getTotalRounds());
+                    roundResult: 'You Win!'
+                }, () => this.resolveRound('You Win!'));
             } else if (this.state.playerChoice === this.state.compChoice) {
                 this.setState({
                     tieCount: this.state.tieCount + 1,
-                    roundResult: 'Round tied!'
-                }, () => this.getTotalRounds());
+                    roundResult: 'It\'s a Tie!'
+                }, () => this.resolveRound('It\'s a Tie!'));
             } else {
                 this.setState({
                     compWinCount: this.state.compWinCount + 1,
-                    roundResult: 'Round lost!'
-                }, () => this.getTotalRounds());
+                    roundResult: 'You Lose!'
+                }, () => this.resolveRound('You Lose!'));
             }
         }
     }
 
+    resolveRound = (roundResult) => {
+        console.log('rr', roundResult);
+        setTimeout(() => {
+            console.log('sto', roundResult);
+            this.getTotalRounds();
+            this.resetForNextRound();
+            this.setRoundResult(roundResult);
+        }, 1000);
+    }
+
+
+
     getTotalRounds = () => {
         const totalRounds = (this.state.compWinCount + this.state.playerWinCount + this.state.tieCount);
-        console.log('compWinCount', this.state.compWinCount, 'userWinCount', this.state.playerWinCount, 'tieCount', this.state.tieCount);
         this.setState({ totalRounds });
     };
+
+    setRoundResult = (roundResult) => {
+        console.log('run', roundResult);
+        this.setState({ roundResult });
+    }
+
+    renderRoundResult = () => {
+        setTimeout(() => {
+            return (
+                <div className="game__roundResult">
+                    <RoundResult roundResult={this.state.roundResult} />
+                </div>
+            );
+        }, 1000)
+    }
+
+    resetForNextRound = () => {
+        this.setState({
+            // roundRe  sult: '',
+            playerCardFlipped: false,
+            compCardFlipped: false,
+            playerChoice: '',
+            compChoice: '',
+            compChoiceNumber: '',
+            // playerCardImage: '',
+            // compCardImage: ''
+        });
+    }
+
     
 
 
@@ -130,6 +167,7 @@ class Game extends Component {
     render(){
         return (
             <div className="game">
+                {this.state.roundResult ? this.renderRoundResult() : ''}
                 <div className="game__cardArea">
                     <PlayerOptionList 
                         options={options} 
