@@ -44,7 +44,10 @@ class Game extends Component {
 
     showCard = (cardHolder) => this.setState({ [`${cardHolder}CardFlipped`]: true });
     
-    getPlayerChoice = (playerChoice) => this.setState({ playerChoice }, () => {this.getCardImage(this.state.playerChoice, 'player')});
+    getPlayerChoice = (playerChoice) => this.setState({ playerChoice }, () => {
+        this.getCardImage(this.state.playerChoice, 'player');
+        this.getCompChoice();
+    });
 
     getCardImage = (choice, cardHolder) => {
         const choiceObject = options.filter((option) => option.type === choice); 
@@ -53,10 +56,12 @@ class Game extends Component {
     }
 
     getCompChoice = () => {
-        let compChoiceNumber = Math.floor(Math.random() * this.state.compChoiceArray.length);
-        const compChoice = Object.keys(this.state.compChoiceArray[compChoiceNumber])[0];
-        this.setState({ compChoice, compChoiceNumber }, () => {this.resolveSetCompChoice()});
-        this.showCard('comp');
+        setTimeout(() => {
+            let compChoiceNumber = Math.floor(Math.random() * this.state.compChoiceArray.length);
+            const compChoice = Object.keys(this.state.compChoiceArray[compChoiceNumber])[0];
+            this.setState({ compChoice, compChoiceNumber }, () => {this.resolveSetCompChoice()});
+            this.showCard('comp');
+        }, 1000)
     }
 
     resolveSetCompChoice = () => {
@@ -69,7 +74,7 @@ class Game extends Component {
         const newArray = this.state.compChoiceArray;
         newArray[this.state.compChoiceNumber][this.state.compChoice]--;
         const cardsRemaining = newArray[this.state.compChoiceNumber][this.state.compChoice];
-        this.setState({ compchoiceArray: newArray }, () => this.caluculateResult(this.state.playerChoice, this.state.compChoice));
+        this.setState({ compChoiceArray: newArray }, () => this.caluculateResult(this.state.playerChoice, this.state.compChoice));
         if (cardsRemaining === 0) {this.clearEmptyCardSlot()}; 
     }
 
@@ -113,7 +118,7 @@ class Game extends Component {
 
     resolveRound = (roundResult) => {
         console.log('rr', roundResult);
-        setTimeout(() => {
+        setTimeout((roundResult) => {
             console.log('sto', roundResult);
             this.getTotalRounds();
             this.resetForNextRound();
@@ -145,14 +150,11 @@ class Game extends Component {
 
     resetForNextRound = () => {
         this.setState({
-            // roundRe  sult: '',
             playerCardFlipped: false,
             compCardFlipped: false,
             playerChoice: '',
             compChoice: '',
             compChoiceNumber: '',
-            // playerCardImage: '',
-            // compCardImage: ''
         });
     }
 
@@ -185,12 +187,6 @@ class Game extends Component {
                     />
                 </div>
                 <div className="game__actionArea">
-                    <div>
-                        <Button 
-                            onClickAction={this.getCompChoice}
-                            description={'Play'}
-                        />
-                    </div>
                     <div>
                         <LinkButton destination='rules' />
                     </div>
