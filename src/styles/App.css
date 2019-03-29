@@ -201,7 +201,9 @@ img {
 .game {
   display: flex;
   flex-direction: column;
-  padding: 10px; }
+  padding: 10px;
+  height: 100vh;
+  justify-content: center; }
 
 .game__cardArea {
   display: flex;
@@ -227,6 +229,38 @@ img {
 
 .game .cardDisplay:first-child {
   margin-bottom: 10px; }
+
+.game .adminArea {
+  display: flex;
+  justify-content: space-between; }
+
+.game .cardTracker {
+  display: flex; }
+
+.game .cardTracker .counterList {
+  display: flex;
+  flex-direction: column; }
+
+.game .cardTracker .listItem {
+  height: 15px;
+  display: flex; }
+
+.game .cardTracker .listItem__image {
+  width: 15px; }
+
+.game .cardTracker .listItem__counter {
+  display: flex;
+  align-items: center; }
+
+.game .cardTracker .listItem__counter .bubble {
+  height: 10px;
+  width: 10px;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin-right: 3px; }
+
+.game .cardTracker .listItem__counter .filled {
+  background: red; }
 
 .card {
   margin-bottom: 10px;

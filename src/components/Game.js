@@ -146,7 +146,6 @@ class Game extends Component {
     };
 
     setRoundResult = (roundResult) => {
-        console.log('run', roundResult);
         this.setState({ roundResult });
     }
 
@@ -187,6 +186,7 @@ class Game extends Component {
                         options={options} 
                         getPlayerChoice={this.getPlayerChoice}
                         showCard={this.showCard}
+                        playerCards={this.state.playerCards}
                     />
                     <CardDisplay 
                         options={options} 
@@ -198,9 +198,13 @@ class Game extends Component {
                         compCardImage={this.state.compCardImage}
                     />
                 </div>
-                <CardTracker 
-                    playerCards={this.state.playerCards}
-                />
+                <div className="adminArea">
+                    <CardTracker 
+                        playerCards={this.state.playerCards}
+                        compCardsArray={this.state.compChoiceArray}
+                    />
+                    <button>menu</button>
+                </div>
             </div>
         );
     }

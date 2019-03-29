@@ -1,34 +1,49 @@
 import React, { Component } from "react";
 
+import options from './options';
 
+const CardTracker = ({ compCardsArray, playerCards }) => {
 
-class CardTracker extends Component {
-    state={ playerCardsArray: [], compCardsArray: [] }    
-
-    componentDidMount() {
-        this.setPlayerCardsArray();
-
+    const renderCounter = (deck, type) => {
+        const list = options.map((item, index) => <div key={index} className={`bubble ${deck[type] >= (index + 1) ? 'filled' : ''}`}></div>); 
+        return list;
     }
 
-    setPlayerCardsArray = () => {
-        const newArray = Object.entries(this.props.playerCards);
-        this.setState({ playerCardsArray: newArray });
+    const renderCounterList = (deck) => {
+        const list = options.map(option => {
+            return (
+                <div className="listItem" key={option.type}>
+                    <div className="listItem__image">
+                        <img src={option.img} alt={option.alt}/>
+                    </div>
+                    <div className="listItem__counter">
+                        {renderCounter(deck, option.type)}
+                    </div>
+                </div>
+            );
+        });
+        return list;
     }
 
+    const convertCompCardsArrayToObject = () => {
+        const compCards = {};
+        compCardsArray.map(item => {
+            const newArray = Object.entries(item);
+            compCards[newArray[0][0]] = newArray[0][1];
+        });
+        return compCards;
+    }
     
-
-    render() {
-        return (
-            <div className="cardTracker">                
-                <div className="counterList">
-                    player
-                </div>
-                <div className="counterList">
-                    comp
-                </div>
+    return (
+        <div className="cardTracker">                
+            <div className="counterList">
+                {renderCounterList(playerCards)}
             </div>
-        );
-    }
+            <div className="counterList">
+                {renderCounterList(convertCompCardsArrayToObject())}
+            </div>
+        </div>
+    );
 }
 
 

@@ -17,22 +17,23 @@ class PlayerOptionItem extends Component{
     updateDimensions = () => {
         const windowSize = window.innerWidth;
         const squareDimension = windowSize / 4;
-        console.log(squareDimension);
         this.setState({ squareDimension });
     }
 
 
     render() {
-
         const squareStyle = {
             width: this.state.squareDimension,
             height: this.state.squareDimension
         }
 
+        const disabled = !this.props.playerCards[this.props.type];
+
+
         return (
-            <button className="playerOptionItem" onClick={this.handleClick} style={squareStyle} >
+            <button className={`playerOptionItem ${disabled ? 'disabled' : ''}`}  onClick={this.handleClick} style={squareStyle} disabled={disabled}>
                 <div>
-                    <img src={this.props.image} alt={this.props.alt} class={this.props.customClass}/>
+                    <img src={this.props.image} alt={this.props.alt} className={this.props.customClass}/>
                 </div>
             </button>
         );
