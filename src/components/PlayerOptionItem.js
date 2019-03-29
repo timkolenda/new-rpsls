@@ -1,32 +1,42 @@
 import React, { Component } from "react";
 
-const PlayerOptionItem = ({ image, alt, type, getPlayerChoice, showCard }) => {
+class PlayerOptionItem extends Component{
     
-    const handleClick = () => {
-        getPlayerChoice(type);
-        showCard('player');
+    state = {squareDimension: 0}
+
+    componentDidMount() {
+        this.updateDimensions();
+        window.addEventListener("resize", this.updateDimensions);
+    }
+
+    handleClick = () => {
+        this.props.getPlayerChoice(this.props.type);
+        this.props.showCard('player');
     }
     
-    const setWidthandHeight = () => {
-        console.log(window.innerWidth);
+    updateDimensions = () => {
         const windowSize = window.innerWidth;
-        const widthOfSquare = windowSize / 3.9;
-        console.log(widthOfSquare);
-        return widthOfSquare
+        const squareDimension = windowSize / 4;
+        console.log(squareDimension);
+        this.setState({ squareDimension });
     }
 
-    const squareStyle = {
-        width: setWidthandHeight(),
-        height: setWidthandHeight()
-    }
 
-    return (
-        <button className="playerOptionItem" onClick={handleClick} style={squareStyle} >
-            <div>
-                <img src={image} alt={alt} />
-            </div>
-        </button>
-    );
+    render() {
+
+        const squareStyle = {
+            width: this.state.squareDimension,
+            height: this.state.squareDimension
+        }
+
+        return (
+            <button className="playerOptionItem" onClick={this.handleClick} style={squareStyle} >
+                <div>
+                    <img src={this.props.image} alt={this.props.alt} class={this.props.customClass}/>
+                </div>
+            </button>
+        );
+    }
 }
 
 export default PlayerOptionItem;

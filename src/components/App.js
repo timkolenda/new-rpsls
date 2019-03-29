@@ -16,7 +16,7 @@ class App extends Component {
     state = {
         playerName: "Enter a nickname",
         playerNameReady: false,
-        playerChoice: "",
+        // playerChoice: "",
         score: 0
     }
 

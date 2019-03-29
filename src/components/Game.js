@@ -5,6 +5,7 @@ import PlayerOptionList from './PlayerOptionList';
 import CardDisplay from './CardDisplay';
 import Button from './Button';
 import RoundResult from './RoundResult';
+import CardTracker from './CardTracker';
 
 import options from './options';
 import LinkButton from "./LinkButton";
@@ -32,6 +33,13 @@ class Game extends Component {
             { lizard: 5 },
             { spock: 5 },
         ],
+        playerCards: {
+            rock: 5,
+            paper: 5,
+            scissors: 5,
+            lizard: 5,
+            spock: 5
+        },
         cardImage: "",
         playerCardImage: '',
         compCardImage: '',
@@ -46,6 +54,7 @@ class Game extends Component {
     
     getPlayerChoice = (playerChoice) => this.setState({ playerChoice }, () => {
         this.getCardImage(this.state.playerChoice, 'player');
+        this.spendPlayerCard();
         this.getCompChoice();
     });
 
@@ -69,6 +78,11 @@ class Game extends Component {
         this.getCardImage(this.state.compChoice, 'comp');
     }
 
+    spendPlayerCard = () => {
+        const newObject = this.state.playerCards;
+        newObject[this.state.playerChoice] = newObject[this.state.playerChoice] - 1;
+        this.setState({ playerCards: newObject });
+    }
 
     spendCompCard = () => {
         const newArray = this.state.compChoiceArray;
@@ -117,9 +131,7 @@ class Game extends Component {
     }
 
     resolveRound = (roundResult) => {
-        console.log('rr', roundResult);
         setTimeout((roundResult) => {
-            console.log('sto', roundResult);
             this.getTotalRounds();
             this.resetForNextRound();
             this.setRoundResult(roundResult);
@@ -186,11 +198,9 @@ class Game extends Component {
                         compCardImage={this.state.compCardImage}
                     />
                 </div>
-                <div className="game__actionArea">
-                    <div>
-                        <LinkButton destination='rules' />
-                    </div>
-                </div>
+                <CardTracker 
+                    playerCards={this.state.playerCards}
+                />
             </div>
         );
     }

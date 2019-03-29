@@ -9,22 +9,24 @@
         display: flex;
         justify-content: space-between;
     }
-    &__actionArea {
-        display: flex;
-    }
     .playerOptionList {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
     }
     .playerOptionItem {
         width: 28vw;
         height: 28vw;
         margin-bottom: 10px;
-        margin-right: 10px;
+        padding: 0;
+        border: none;
+        background: white;
+        // margin-right: 10px;
     }
     .cardDisplay {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         &:first-child {
             margin-bottom: 10px;
         }

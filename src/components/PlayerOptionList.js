@@ -11,7 +11,8 @@ const PlayerOptionList = ({ options, getPlayerChoice, showCard }) => {
                     alt={option.alt}
                     type={option.type}
                     getPlayerChoice={getPlayerChoice}
-                    showCard={showCard}                    
+                    showCard={showCard}
+                    customClass={option.customClass}
                 />
             );
                 
