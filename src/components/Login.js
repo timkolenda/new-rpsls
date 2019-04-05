@@ -52,6 +52,9 @@ class Login extends Component {
                     <div className="loginPageButtons__buttonContainer">
                         <LinkButton destination='rules' />
                     </div>
+                    <div className="loginPageButtons__buttonContainer">
+                        <LinkButton destination='leaderboard' />
+                    </div>
                 </div>
                 
             </div>

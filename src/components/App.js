@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom
 import Login from './Login';
 import Game from './Game';
 import Rules from './Rules';
-import Scoreboard from './Scoreboard';
+import Leaderboard from './Leaderboard';
 
 import options from './options';
 import firebase from './firebase';
@@ -16,8 +16,10 @@ class App extends Component {
     state = {
         playerName: "Enter a nickname",
         playerNameReady: false,
-        // playerChoice: "",
-        score: 0
+        tie: 0,
+        win: 0,
+        lose: 0,
+        id: ''
     }
 
     handleChange = (e, testValue) => {
@@ -47,10 +49,25 @@ class App extends Component {
     addNewPlayerToFirebase = () => {
         const newPlayer = {
             name: this.state.playerName,
-            score: this.state.score
+            win: this.state.win,
+            lose: this.state.lose,
+            tie: this.state.tie
         }
-        dbRef.push(newPlayer);
+        dbRef.push(newPlayer).then((snap) => {
+            this.setState({ id: snap.key });
+        });
     }
+
+    updateFirebase = (type) => {
+        console.log(dbRef.child(this.state.id));
+        dbRef.child(this.state.id).child(type).set(this.state[type]);
+    }
+
+    updateCount = (type) => {
+        this.setState({ [type]: this.state[type] + 1 }, () => this. updateFirebase(type));
+    }
+
+
     
 
     render() {
@@ -66,9 +83,12 @@ class App extends Component {
                         addNewPlayerToFirebase={this.addNewPlayerToFirebase}
                         checkForPlayerNameReady={this.checkForPlayerNameReady}
                     /> )}/>
-                    <Route path="/game" render={(props) => ( <Game /> )}/>
+                    <Route path="/game" render={(props) => ( 
+                        <Game 
+                            updateCount={this.updateCount}
+                        /> )}/>
                     <Route path="/rules" render={(props) => ( <Rules /> )}/>
-                    <Route path="/scoreboard" render={(props) => ( <Scoreboard /> )}/>
+                    <Route path="/leaderboard" render={(props) => ( <Leaderboard /> )}/>
                 </div>
             </Router>
         );

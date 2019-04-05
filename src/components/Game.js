@@ -112,16 +112,19 @@ class Game extends Component {
                 || ((playerChoice === "spock") && (compChoice === "scissors"))
                 || ((playerChoice === "lizard") && (compChoice === "paper"))
                 || ((playerChoice === "lizard") && (compChoice === "spock"))) {
+                this.props.updateCount('win');
                 this.setState({
                     playerWinCount: this.state.playerWinCount + 1,
                     roundResult: 'You Win!'
                 }, () => this.resolveRound('You Win!'));
             } else if (this.state.playerChoice === this.state.compChoice) {
+                this.props.updateCount('tie');
                 this.setState({
                     tieCount: this.state.tieCount + 1,
                     roundResult: 'It\'s a Tie!'
                 }, () => this.resolveRound('It\'s a Tie!'));
             } else {
+                this.props.updateCount('lose');
                 this.setState({
                     compWinCount: this.state.compWinCount + 1,
                     roundResult: 'You Lose!'
