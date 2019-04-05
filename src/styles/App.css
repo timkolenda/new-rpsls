@@ -159,31 +159,33 @@ img {
 
 .button {
   width: 100%; }
-  .button .button__target {
-    text-transform: uppercase;
-    padding: 13px 0;
-    border: none;
-    color: white;
-    background-color: #ee6055;
-    font-size: 2rem;
-    border-radius: 10px;
-    text-decoration: none;
-    width: 100%;
-    display: block; }
+
+.button .button__target {
+  text-transform: uppercase;
+  padding: 13px 0;
+  border: none;
+  color: white;
+  background-color: #ee6055;
+  font-size: 2rem;
+  border-radius: 10px;
+  text-decoration: none;
+  width: 100%;
+  display: block; }
 
 .login .playerNameSubmissionForm {
   display: flex;
   flex-direction: column;
   align-items: center; }
-  .login .playerNameSubmissionForm__input {
-    width: 90%;
-    padding: 13px 50px;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 50px;
-    text-align: center;
-    margin-top: 15px;
-    font-size: 2rem; }
+
+.login .playerNameSubmissionForm__input {
+  width: 90%;
+  padding: 13px 50px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 2rem; }
 
 .login .loginPageButtons {
   display: flex;
@@ -192,8 +194,9 @@ img {
   justify-content: space-between;
   height: 20vh;
   margin-top: 30px; }
-  .login .loginPageButtons__buttonContainer {
-    width: 90%; }
+
+.login .loginPageButtons__buttonContainer {
+  width: 90%; }
 
 .game {
   display: flex;
@@ -201,69 +204,102 @@ img {
   padding: 10px;
   height: 100vh;
   justify-content: center; }
-  .game__cardArea {
-    display: flex;
-    justify-content: space-between; }
-  .game .playerOptionList {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; }
-  .game .playerOptionItem {
-    width: 28vw;
-    height: 28vw;
-    margin-bottom: 10px;
-    padding: 0;
-    border: none;
-    background: white; }
-  .game .cardDisplay {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; }
-    .game .cardDisplay:first-child {
-      margin-bottom: 10px; }
-  .game .adminArea {
-    display: flex;
-    justify-content: space-between; }
-  .game .cardTracker {
-    display: flex; }
-    .game .cardTracker .counterList {
-      display: flex;
-      flex-direction: column; }
-    .game .cardTracker .listItem {
-      height: 15px;
-      display: flex; }
-      .game .cardTracker .listItem__image {
-        width: 15px; }
-      .game .cardTracker .listItem__counter {
-        display: flex;
-        align-items: center; }
-        .game .cardTracker .listItem__counter .bubble {
-          height: 10px;
-          width: 10px;
-          border: 1px solid black;
-          border-radius: 50%;
-          margin-right: 3px; }
-        .game .cardTracker .listItem__counter .filled {
-          background: red; }
+
+.game__cardArea {
+  display: flex;
+  justify-content: space-between; }
+
+.game .playerOptionList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
+.game .playerOptionItem {
+  width: 28vw;
+  height: 28vw;
+  margin-bottom: 10px;
+  padding: 0;
+  border: none;
+  background: white; }
+
+.game .cardDisplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
+.game .cardDisplay:first-child {
+  margin-bottom: 10px; }
+
+.game .adminArea {
+  display: flex;
+  justify-content: space-between; }
+
+.game .cardTracker {
+  display: flex; }
+
+.game .cardTracker .counterList {
+  display: flex;
+  flex-direction: column; }
+
+.game .cardTracker .listItem {
+  height: 15px;
+  display: flex; }
+
+.game .cardTracker .listItem__image {
+  width: 15px; }
+
+.game .cardTracker .listItem__counter {
+  display: flex;
+  align-items: center; }
+
+.game .cardTracker .listItem__counter .bubble {
+  height: 10px;
+  width: 10px;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin-right: 3px; }
+
+.game .cardTracker .listItem__counter .filled {
+  background: red; }
 
 .card {
   margin-bottom: 10px;
   perspective: 1000px; }
-  .card__cardFlipper {
-    transition: 2s;
-    transform-style: preserve-3d;
-    position: relative; }
-    .card__cardFlipper--active {
-      transform: rotateY(180deg); }
-  .card .card__display {
-    height: 72vw;
-    backface-visibility: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex; }
-    .card .card__display--back {
-      background-color: blue; }
-    .card .card__display--front {
-      background-color: red;
-      transform: rotateY(180deg); }
+
+.card__cardFlipper {
+  transition: 2s;
+  transform-style: preserve-3d;
+  position: relative; }
+
+.card__cardFlipper--active {
+  transform: rotateY(180deg); }
+
+.card .card__display {
+  height: 72vw;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex; }
+
+.card .card__display--back {
+  background-color: blue; }
+
+.card .card__display--front {
+  background-color: red;
+  transform: rotateY(180deg); }
+
+.rankingRow {
+  display: flex;
+  width: 100%; }
+
+.rankingRow .column--short {
+  flex: 1 0 auto; }
+
+.rankingRow .column--long {
+  flex: 5 0 auto;
+  text-align: left; }
+
+.rankingRow .column--name {
+  flex: 5 0 100px;
+  padding-left: 10px; }

@@ -31,13 +31,14 @@ class Leaderboard extends Component {
     }
         
     renderRankings = () => {
-        const list = this.state.players.map(player => {
+        const list = this.state.players.map((player, index) => {
             return (
                 <div className="rankingRow">
-                    <div className="playerName">{player.name}</div>
-                    <div className="playerWins">{player.win}</div>
-                    <div className="playerLoses">{player.lose}</div>
-                    <div className="playerTies">{player.tie}</div>  
+                    <div className="column column--short">{index + 1}</div>
+                    <div className="column column--long column--name">{player.name}</div>
+                    <div className="column column--long">{player.win}</div>
+                    <div className="column column--long">{player.tie}</div>
+                    <div className="column column--long">{player.lose}</div>
                 </div>
             )
         });

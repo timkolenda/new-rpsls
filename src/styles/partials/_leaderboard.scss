@@ -1,0 +1,18 @@
+
+.rankingRow {
+    display: flex;
+    width: 100%;
+    .column {
+        &--short {
+            flex: 1 0 auto;
+        }
+        &--long {
+            flex: 5 0 auto;
+            text-align: left;
+        }
+        &--name {
+            flex: 5 0 100px;
+            padding-left: 10px;
+        }
+    }
+}
