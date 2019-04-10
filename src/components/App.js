@@ -19,7 +19,21 @@ class App extends Component {
         tie: 0,
         win: 0,
         lose: 0,
-        id: ''
+        id: '',
+        windowWidth: 0,
+        windowHeight: 0
+    }
+
+    componentDidMount() {
+        this.updateWindow()
+        window.addEventListener("resize", this.updateWindow);
+    }
+
+    updateWindow = () => {
+        this.setState({
+            windowWidth: window.innerWidth,
+            windowHeight: window.innerHeight 
+        });
     }
 
     handleChange = (e, testValue) => {

@@ -23,12 +23,24 @@ class Card extends Component {
             width: this.state.squareDimension
         }
         return (
-            <div className="card" style={width}>
-                <div className={`card__cardFlipper ${this.props.flipped ? 'card__cardFlipper--active' : ''}`} style={squareStyle}>
-                    <div className={`card__display card__display--back`} style={squareStyle}>
+            <div 
+                className="card" 
+                style={window.innerWidth < 800 ? squareStyle : null} 
+            >
+                <div 
+                    className={`card__cardFlipper ${this.props.flipped ? 'card__cardFlipper--active' : ''}`} 
+                    style={window.innerWidth < 800 ? squareStyle : null} 
+                >
+                    <div 
+                        className={`card__display card__display--back`} 
+                        style={window.innerWidth < 800 ? squareStyle : null} 
+                    >
                         <img src='' alt='' />
                     </div>
-                    <div className={`card__display card__display--front`} style={squareStyle}>
+                    <div 
+                        className={`card__display card__display--front`} 
+                        style={window.innerWidth < 800 ? squareStyle : null} 
+                    >
                         <img src={this.props.image} alt='' />
                     </div>
                 </div>

@@ -172,6 +172,17 @@ class Game extends Component {
         });
     }
 
+    renderAdmin = () => {
+        return (
+            <div className="adminArea">
+                <CardTracker
+                    playerCards={this.state.playerCards}
+                    compCardsArray={this.state.compChoiceArray}
+                />
+                <button>menu</button>
+            </div>
+        );
+    }
     
 
 
@@ -186,23 +197,20 @@ class Game extends Component {
                         showCard={this.showCard}
                         playerCards={this.state.playerCards}
                     />
-                    <CardDisplay 
-                        options={options} 
-                        playerCardFlipped={this.state.playerCardFlipped}
-                        compCardFlipped={this.state.compCardFlipped}
-                        playerChoice={this.state.playerChoice}
-                        compChoice={this.state.compChoice}
-                        playerCardImage={this.state.playerCardImage}
-                        compCardImage={this.state.compCardImage}
-                    />
+                    <div className="cardDisplayContainer">
+                        <CardDisplay 
+                            options={options} 
+                            playerCardFlipped={this.state.playerCardFlipped}
+                            compCardFlipped={this.state.compCardFlipped}
+                            playerChoice={this.state.playerChoice}
+                            compChoice={this.state.compChoice}
+                            playerCardImage={this.state.playerCardImage}
+                            compCardImage={this.state.compCardImage}
+                        />
+                        {window.innerWidth < 800 ? null : this.renderAdmin()}
+                    </div>
                 </div>
-                <div className="adminArea">
-                    <CardTracker 
-                        playerCards={this.state.playerCards}
-                        compCardsArray={this.state.compChoiceArray}
-                    />
-                    <button>menu</button>
-                </div>
+                {window.innerWidth < 800 ? this.renderAdmin() : null}
             </div>
         );
     }

@@ -29,9 +29,12 @@ class PlayerOptionItem extends Component{
 
         const disabled = !this.props.playerCards[this.props.type];
 
-
         return (
-            <button className={`playerOptionItem ${disabled ? 'disabled' : ''}`}  onClick={this.handleClick} style={squareStyle} disabled={disabled}>
+            <button 
+                className={`playerOptionItem ${disabled ? 'disabled' : ''}`}  
+                onClick={this.handleClick} 
+                style={window.innerWidth < 800 ? squareStyle : null} 
+                disabled={disabled}>
                 <div>
                     <img src={this.props.image} alt={this.props.alt} className={this.props.customClass}/>
                 </div>

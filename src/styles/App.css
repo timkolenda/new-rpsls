@@ -157,6 +157,11 @@ img {
 .rockClass {
   width: 80%; }
 
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  max-height: 100vh; }
+
 .button .button__target {
   text-transform: uppercase;
   padding: 13px 0;
@@ -200,11 +205,15 @@ img {
   flex-direction: column;
   padding: 10px;
   height: 100vh;
+  max-width: 100vw;
   justify-content: center; }
 
 .game__cardArea {
   display: flex;
   justify-content: space-between; }
+
+.game .cardDisplayContainer {
+  display: flex; }
 
 .game .playerOptionList {
   display: flex;
@@ -212,8 +221,8 @@ img {
   justify-content: space-between; }
 
 .game .playerOptionItem {
-  width: 28vw;
-  height: 28vw;
+  width: 100px;
+  height: 100px;
   margin-bottom: 10px;
   padding: 0;
   border: none;
@@ -259,20 +268,61 @@ img {
 .game .cardTracker .listItem__counter .filled {
   background: red; }
 
+@media (min-width: 800px) {
+  .game .cardDisplayContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }
+  .game .cardDisplay {
+    flex-direction: row; }
+  .game .cardDisplay:first-child {
+    margin-bottom: 0px; }
+  .game .adminArea {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; }
+  .game .cardTracker {
+    display: flex; }
+  .game .cardTracker .counterList {
+    display: flex;
+    flex-direction: column; }
+  .game .cardTracker .listItem {
+    height: 30px;
+    display: flex; }
+  .game .cardTracker .listItem__image {
+    width: 30px; }
+  .game .cardTracker .listItem__counter {
+    display: flex;
+    align-items: center; }
+  .game .cardTracker .listItem__counter .bubble {
+    height: 20px;
+    width: 20px;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-right: 6px; }
+  .game .cardTracker .listItem__counter .filled {
+    background: red; } }
+
 .card {
   margin-bottom: 10px;
+  width: 300px;
+  height: 300px;
   perspective: 1000px; }
 
 .card__cardFlipper {
   transition: 2s;
   transform-style: preserve-3d;
-  position: relative; }
+  position: relative;
+  width: 300px;
+  height: 300px; }
 
 .card__cardFlipper--active {
   transform: rotateY(180deg); }
 
 .card .card__display {
-  height: 72vw;
+  width: 300px;
+  height: 300px;
   backface-visibility: hidden;
   position: absolute;
   top: 0;
@@ -291,5 +341,5 @@ img {
   overflow: scroll; }
 
 .maxedHeight {
-  max-height: 80vh !important;
+  max-height: 70vh;
   overflow: scroll; }
