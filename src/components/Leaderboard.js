@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 
 import firebase from './firebase';
+
+import Modal from './Modal';
+import history from './history';
 
 const dbRef = firebase.database().ref();
 
@@ -29,35 +33,59 @@ class Leaderboard extends Component {
         // console.log(sortedList);
         this.setState({ players: sortedList });
     }
-        
+
     renderRankings = () => {
         const list = this.state.players.map((player, index) => {
             return (
-                <div className="rankingRow">
-                    <div className="column column--short">{index + 1}</div>
-                    <div className="column column--long column--name">{player.name}</div>
-                    <div className="column column--long">{player.win}</div>
-                    <div className="column column--long">{player.tie}</div>
-                    <div className="column column--long">{player.lose}</div>
-                </div>
+                <tr>
+                    <td data-label="Rank">{index + 1}</td>
+                    <td data-label="Name">{player.name}</td>
+                    <td data-label="Wins">{player.win}</td>
+                    <td data-label="Loses">{player.lose}</td>
+                </tr>
             )
         });
-        console.log(list);
         return list;
+    }
+
+    renderContent = () => { 
+        return (
+            <div className="leaderboard">
+                <table className="ui celled table unstackable">
+                    <thead>
+                        <tr>
+                            <th className="rankColumn">Rank</th>
+                            <th>Name</th>
+                            <th>Wins</th>
+                            <th>Loses</th>
+                        </tr>
+                    </thead>
+                    <tbody className="rankList">
+                        {this.renderRankings()}
+                    </tbody>
+                </table>
+            </div>
+        )
+    }
+
+    renderActions = () => {
+        return (
+            <React.Fragment>
+                <Link to="/" className="ui button primary">Back</Link>
+            </React.Fragment>
+        );
     }
 
 
 
     render(){
         return (
-            <div className="leaderboard">
-                <div className="title">
-                    <h2>Leaderboard</h2>
-                </div>
-                <div className="rankings">
-                    {this.renderRankings()}
-                </div>
-            </div>
+            <Modal
+                title="LeaderBoard"
+                content={this.renderContent()}
+                actions={this.renderActions()}
+                onDismiss={() => history.goBack()}
+            />
         );
     }
 };

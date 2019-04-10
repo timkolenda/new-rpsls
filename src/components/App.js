@@ -59,7 +59,6 @@ class App extends Component {
     }
 
     updateFirebase = (type) => {
-        console.log(dbRef.child(this.state.id));
         dbRef.child(this.state.id).child(type).set(this.state[type]);
     }
 

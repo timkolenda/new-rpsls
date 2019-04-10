@@ -148,7 +148,7 @@ html {
   text-align: center; }
 
 body {
-  background: #f4ebce;
+  background: #fff;
   font-family: 'Open Sans', sans-serif; }
 
 img {
@@ -156,9 +156,6 @@ img {
 
 .rockClass {
   width: 80%; }
-
-.button {
-  width: 100%; }
 
 .button .button__target {
   text-transform: uppercase;
@@ -289,17 +286,10 @@ img {
   background-color: red;
   transform: rotateY(180deg); }
 
-.rankingRow {
-  display: flex;
-  width: 100%; }
+.rankList {
+  height: 200px;
+  overflow: scroll; }
 
-.rankingRow .column--short {
-  flex: 1 0 auto; }
-
-.rankingRow .column--long {
-  flex: 5 0 auto;
-  text-align: left; }
-
-.rankingRow .column--name {
-  flex: 5 0 100px;
-  padding-left: 10px; }
+.maxedHeight {
+  max-height: 80vh !important;
+  overflow: scroll; }
