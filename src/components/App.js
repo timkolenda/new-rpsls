@@ -24,7 +24,9 @@ class App extends Component {
         lose: 0,
         id: '',
         windowWidth: 0,
-        windowHeight: 0
+        windowHeight: 0,
+        recoveryKey: '',
+        // recoveredData: {}
     }
 
     componentDidMount() {
@@ -83,8 +85,17 @@ class App extends Component {
         this.setState({ [type]: this.state[type] + 1 }, () => this. updateFirebase(type));
     }
 
-    
-    
+    getRecoveryKey = (key) => {
+        this.setState({ recoveryKey: key });
+    }
+
+    // recoverCurrentGameData = () => {
+    //     dbRef.child(this.state.id).child(this.state.recoveryKey).once('value').then((snapshot) => {
+    //         const recoveredData = snapshot.toJSON();
+    //         this.setState({ recoveredData });
+    //     });
+    // }
+
 
     render() {
         const backgroundImg = {
@@ -110,9 +121,16 @@ class App extends Component {
                                 updateCount={this.updateCount}
                                 windowWidth={this.state.windowWidth}
                                 windowHeight={this.state.windowHeight}
-                            /> )}
-                        />
-                        <Route path="/menu" render={(props) => (<Menu />)} />
+                                id={this.state.id}
+                                getRecoveryKey={this.getRecoveryKey}
+                                tie={this.state.tie}
+                                win={this.state.win}
+                                lose={this.state.lose}
+                                recoveredData={this.state.recoveredData}
+                                recoveryKey={this.state.recoveryKey}
+                    /> )}
+                />
+                        <Route path="/menu" render={(props) => (<Menu recoverCurrentGameData={this.recoverCurrentGameData} />)} />
                         <Route path="/rules" render={(props) => ( <Rules /> )}/>
                         <Route path="/leaderboard" render={(props) => ( <Leaderboard /> )}/>
                     </div>

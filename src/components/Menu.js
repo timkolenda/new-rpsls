@@ -6,8 +6,12 @@ import LinkButton from './LinkButton';
 
 import history from './history';
 
-const Menu = () => {
+const Menu = ({ recoverCurrentGameData }) => {
 
+    const handleClick = () => {
+        // recoverCurrentGameData();
+        history.goBack();
+    }
 
     const renderContent = () => {
         return (
@@ -24,7 +28,7 @@ const Menu = () => {
     const renderActions = () => {
         return (
             <React.Fragment>
-                <button onClick={() => history.goBack()} className="ui button primary">Back</button>
+                <button onClick={() => handleClick()} className="ui button primary">Back</button>
             </React.Fragment>
         );
     }

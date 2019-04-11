@@ -6,9 +6,12 @@ import CardDisplay from './CardDisplay';
 import Button from './Button';
 import RoundResult from './RoundResult';
 import CardTracker from './CardTracker';
+import LinkButton from "./LinkButton";
 
 import options from './options';
-import LinkButton from "./LinkButton";
+import firebase from './firebase';
+import { clearScreenDown } from "readline";
+
 
 const compChoiceArray = [
     {rock: 5},
@@ -49,6 +52,14 @@ class Game extends Component {
         roundResult: '',
         totalRounds: 0
     }
+
+    componentDidMount(){
+        if (this.props.recoveryKey) {
+            console.log('run');
+            this.recoverCurrentGameData();
+        }
+    }
+
 
     showCard = (cardHolder) => this.setState({ [`${cardHolder}CardFlipped`]: true });
     
@@ -152,6 +163,31 @@ class Game extends Component {
         this.setState({ roundResult });
     }
 
+    saveCurrentGameData = () => {
+        const gameData = {
+            compChoiceArray: this.state.compChoiceArray,
+            playerCards: this.state.playerCards,
+        }
+        firebase.database().ref().child(this.props.id).push(gameData).then((snap) => {
+            this.props.getRecoveryKey(snap.key);
+        });
+    }
+
+    recoverCurrentGameData = () => {
+        firebase.database().ref().child(this.props.id).child(this.props.recoveryKey).once('value').then((snapshot) => {
+            const recoveredData = snapshot.toJSON();
+            this.restoreCurrentGame(recoveredData);
+        });
+    }
+
+    restoreCurrentGame = (data) => {
+        console.log(data);
+        const compChoiceArray = []
+        // console.log('this thing', data.compChoiceArray[0]);
+        
+    }
+
+
     renderRoundResult = () => {
         setTimeout(() => {
             return (
@@ -182,11 +218,12 @@ class Game extends Component {
                     compWinCount={this.state.compWinCount}
                     tieCount={this.state.tieCount}
             />
-                <Link to="/menu">Menu</Link>
+                <Link to="/menu" onClick={this.saveCurrentGameData}>Menu</Link>
             </div>
         );
     }
     
+
 
 
     render(){
