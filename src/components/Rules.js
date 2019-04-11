@@ -9,7 +9,7 @@ const Rules = () => {
     const renderActions = () => {
         return (
             <React.Fragment>
-                <Link to="/" className="ui button">Back</Link>
+                <Link to="" onClick={() => history.goBack()} className="ui button primary">Back</Link>
             </React.Fragment>
         );
     }

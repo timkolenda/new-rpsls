@@ -178,8 +178,11 @@ class Game extends Component {
                 <CardTracker
                     playerCards={this.state.playerCards}
                     compCardsArray={this.state.compChoiceArray}
-                />
-                <button>menu</button>
+                    playerWinCount={this.state.playerWinCount}
+                    compWinCount={this.state.compWinCount}
+                    tieCount={this.state.tieCount}
+            />
+                <Link to="/menu">Menu</Link>
             </div>
         );
     }

@@ -18,9 +18,16 @@ img {
     width: 80%;
 }
 
-.app {
+
+
+.appWrapper {
     max-width: 800px;
     margin: 0 auto;
-    max-height: 100vh;
+    height: 100vh;
+    display: flex;
 }
 
+.menuOptions {
+    max-width: 200px;
+    margin: 0 auto;
+}

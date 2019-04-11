@@ -6,9 +6,12 @@ import Login from './Login';
 import Game from './Game';
 import Rules from './Rules';
 import Leaderboard from './Leaderboard';
+import Menu from './Menu';
 
+import background from '../backgroundImage/background.png';
 import options from './options';
 import firebase from './firebase';
+
 
 const dbRef = firebase.database().ref();
 
@@ -80,28 +83,39 @@ class App extends Component {
         this.setState({ [type]: this.state[type] + 1 }, () => this. updateFirebase(type));
     }
 
-
+    
     
 
     render() {
+        const backgroundImg = {
+            backgroundImage: `linear-gradient(to bottom, rgba(205, 169, 157, 0.7), rgba(205, 169, 157, 0.7)), url(${background})`
+        }
+
         return (
             <Router>
-                <div className="app">
-                    <Route exact path="/" render={(props) => ( 
-                    <Login 
-                        playerName={this.state.playerName}
-                        playerNameReady={this.state.playerNameReady}
-                        handleChange={this.handleChange}
-                        handleNewPlayerFormSubmit={this.handleNewPlayerFormSubmit}
-                        addNewPlayerToFirebase={this.addNewPlayerToFirebase}
-                        checkForPlayerNameReady={this.checkForPlayerNameReady}
-                    /> )}/>
-                    <Route path="/game" render={(props) => ( 
-                        <Game 
-                            updateCount={this.updateCount}
-                        /> )}/>
-                    <Route path="/rules" render={(props) => ( <Rules /> )}/>
-                    <Route path="/leaderboard" render={(props) => ( <Leaderboard /> )}/>
+                <div className="app" style={backgroundImg}>
+                    <div className="appWrapper">
+                        <Route exact path="/" render={(props) => ( 
+                            <Login 
+                                playerName={this.state.playerName}
+                                playerNameReady={this.state.playerNameReady}
+                                handleChange={this.handleChange}
+                                handleNewPlayerFormSubmit={this.handleNewPlayerFormSubmit}
+                                addNewPlayerToFirebase={this.addNewPlayerToFirebase}
+                                checkForPlayerNameReady={this.checkForPlayerNameReady}
+                            /> )}
+                        />
+                        <Route path="/game" render={(props) => ( 
+                            <Game 
+                                updateCount={this.updateCount}
+                                windowWidth={this.state.windowWidth}
+                                windowHeight={this.state.windowHeight}
+                            /> )}
+                        />
+                        <Route path="/menu" render={(props) => (<Menu />)} />
+                        <Route path="/rules" render={(props) => ( <Rules /> )}/>
+                        <Route path="/leaderboard" render={(props) => ( <Leaderboard /> )}/>
+                    </div>
                 </div>
             </Router>
         );

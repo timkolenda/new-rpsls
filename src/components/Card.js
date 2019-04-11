@@ -19,9 +19,7 @@ class Card extends Component {
             width: this.state.squareDimension,
             height: this.state.squareDimension
         }
-        const width = {
-            width: this.state.squareDimension
-        }
+        
         return (
             <div 
                 className="card" 

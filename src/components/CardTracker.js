@@ -2,10 +2,19 @@ import React, { Component } from "react";
 
 import options from './options';
 
-const CardTracker = ({ compCardsArray, playerCards }) => {
+
+const CardTracker = ({ compCardsArray, playerCards, playerWinCount, compWinCount, tieCount }) => {
 
     const renderCounter = (deck, type) => {
-        const list = options.map((item, index) => <div key={index} className={`bubble ${deck[type] >= (index + 1) ? 'filled' : ''}`}></div>); 
+        const list = options.map((item, index) => {
+            return (
+                <div 
+                    key={index} 
+                    className={`bubble ${deck[type] >= (index + 1) ? 'filled ' : ''}`}
+                >
+                </div>
+            );
+        });
         return list;
     }
 
@@ -41,6 +50,20 @@ const CardTracker = ({ compCardsArray, playerCards }) => {
             </div>
             <div className="counterList">
                 {renderCounterList(convertCompCardsArrayToObject())}
+            </div>
+            <div className="score">
+                <div className="score__row">
+                    <div className="score__cell score__cell--heading">Wins</div>
+                    <div className="score__cell">{playerWinCount}</div>
+                </div>
+                <div className="score__row">
+                    <div className="score__cell score__cell--heading">Loses</div>
+                    <div className="score__cell">{compWinCount}</div>
+                </div>
+                <div className="score__row">
+                    <div className="score__cell score__cell--heading">Ties</div>
+                    <div className="score__cell">{tieCount}</div>
+                </div>
             </div>
         </div>
     );

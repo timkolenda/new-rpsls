@@ -71,7 +71,7 @@ class Leaderboard extends Component {
     renderActions = () => {
         return (
             <React.Fragment>
-                <Link to="/" className="ui button primary">Back</Link>
+                <button onClick={() => history.goBack()} className="ui button primary">Back</button>
             </React.Fragment>
         );
     }

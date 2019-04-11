@@ -1,7 +1,7 @@
 
 
-.button {
-    // width: 100%;
+.linkButton {
+    margin-bottom: 15px;
     .button__target {
         text-transform: uppercase;
         padding: 13px 0;
@@ -13,6 +13,7 @@
         text-decoration: none;
         width: 100%;
         display: block;
+        text-align: center;
     }
 }
 
