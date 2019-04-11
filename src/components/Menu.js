@@ -6,10 +6,9 @@ import LinkButton from './LinkButton';
 
 import history from './history';
 
-const Menu = ({ recoverCurrentGameData }) => {
+const Menu = ({ recoverCurrentGameData, resetGame }) => {
 
     const handleClick = () => {
-        // recoverCurrentGameData();
         history.goBack();
     }
 
@@ -17,9 +16,9 @@ const Menu = ({ recoverCurrentGameData }) => {
         return (
             <div className="menu">
                 <div className="menuOptions">
-                    <LinkButton destination={"/"} message={'New Game'} />
+                    <LinkButton destination={"/"} message={'New Game'} action={resetGame} />
                     <LinkButton destination={"/rules"} message={'Rules'}/>
-                    <LinkButton destination={"/leaderboard"} message={'Leaderboard'}/>
+                    <LinkButton destination={"/leaderboard"} message={'Leaderboard'} />
                 </div>
             </div>
         )

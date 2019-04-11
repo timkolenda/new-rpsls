@@ -17,7 +17,7 @@ const dbRef = firebase.database().ref();
 
 class App extends Component {
     state = {
-        playerName: "Enter a nickname",
+        playerName: '',
         playerNameReady: false,
         tie: 0,
         win: 0,
@@ -26,7 +26,6 @@ class App extends Component {
         windowWidth: 0,
         windowHeight: 0,
         recoveryKey: '',
-        // recoveredData: {}
     }
 
     componentDidMount() {
@@ -89,12 +88,18 @@ class App extends Component {
         this.setState({ recoveryKey: key });
     }
 
-    // recoverCurrentGameData = () => {
-    //     dbRef.child(this.state.id).child(this.state.recoveryKey).once('value').then((snapshot) => {
-    //         const recoveredData = snapshot.toJSON();
-    //         this.setState({ recoveredData });
-    //     });
-    // }
+    resetGame = () => {
+        console.log('run');
+        this.setState({
+            playerName: '',
+            playerNameReady: false,
+            tie: 0,
+            win: 0,
+            lose: 0,
+            id: '',
+            recoveryKey: '',
+        });
+    }
 
 
     render() {
@@ -128,9 +133,14 @@ class App extends Component {
                                 lose={this.state.lose}
                                 recoveredData={this.state.recoveredData}
                                 recoveryKey={this.state.recoveryKey}
-                    /> )}
-                />
-                        <Route path="/menu" render={(props) => (<Menu recoverCurrentGameData={this.recoverCurrentGameData} />)} />
+                            /> )}
+                        />
+                        <Route path="/menu" render={(props) => (
+                            <Menu 
+                                recoverCurrentGameData={this.recoverCurrentGameData} 
+                                resetGame={this.resetGame}
+                            />)} 
+                        />
                         <Route path="/rules" render={(props) => ( <Rules /> )}/>
                         <Route path="/leaderboard" render={(props) => ( <Leaderboard /> )}/>
                     </div>
