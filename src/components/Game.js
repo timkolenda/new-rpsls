@@ -10,7 +10,7 @@ import LinkButton from "./LinkButton";
 
 import options from './options';
 import firebase from './firebase';
-import { clearScreenDown } from "readline";
+
 
 
 const compChoiceArray = [
@@ -181,10 +181,18 @@ class Game extends Component {
     }
 
     restoreCurrentGame = (data) => {
-        console.log(data);
+        console.log(data.compChoiceArray);
         const compChoiceArray = []
-        // console.log('this thing', data.compChoiceArray[0]);
-        
+        for (let key in data.compChoiceArray) {
+            compChoiceArray.push(data.compChoiceArray[key])
+        }
+        this.setState({
+            compChoiceArray,
+            playerCards: data.playerCards,
+            playerWinCount: this.props.win,
+            compWinCount: this.props.lose,
+            tieCount: this.props.tie,
+        });
     }
 
 
