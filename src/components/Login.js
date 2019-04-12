@@ -43,7 +43,7 @@ class Login extends Component {
                 <h2>RPSLS</h2>
                 <form className="playerNameSubmissionForm" action="#"  onSubmit={this.handleSubmit} >
                     <label className="visuallyhidden" htmlFor="playerName">Please enter your nickname!</label>
-                    <input className="playerNameSubmissionForm__input" type="text" id="playerName" value={this.props.playerName} onChange={(e) => this.props.handleChange(e, this.props.checkForPlayerNameReady)} />
+                    <input className="playerNameSubmissionForm__input" type="text" id="playerName" value={this.props.playerName} onChange={(e) => this.props.handleChange(e, this.props.checkForPlayerNameReady)} placeholder="Enter a Nickname"/>
                 </form>
                 <div className="loginPageButtons">
                     <div className="loginPageButtons__buttonContainer" onClick={this.handleClick}>

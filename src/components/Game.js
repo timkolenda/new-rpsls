@@ -192,7 +192,7 @@ class Game extends Component {
             playerWinCount: this.props.win,
             compWinCount: this.props.lose,
             tieCount: this.props.tie,
-        });
+        })
     }
 
 

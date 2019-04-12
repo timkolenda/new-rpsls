@@ -40,7 +40,7 @@ const Menu = ({ recoverCurrentGameData, resetGame }) => {
             title="Menu"
             content={renderContent()}
             actions={renderActions()}
-            onDismiss={() => history.goBack()}
+            onDismiss={() => history.push('/game')}
         />
     )
 }

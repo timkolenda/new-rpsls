@@ -11,6 +11,7 @@ import Menu from './Menu';
 import background from '../backgroundImage/background.png';
 import options from './options';
 import firebase from './firebase';
+import history from './history';
 
 
 const dbRef = firebase.database().ref();
@@ -29,8 +30,12 @@ class App extends Component {
     }
 
     componentDidMount() {
+        if(!this.state.id) {
+            history.push('/');
+        }
         this.updateWindow()
         window.addEventListener("resize", this.updateWindow);
+        
     }
 
     updateWindow = () => {
@@ -131,7 +136,6 @@ class App extends Component {
                                 tie={this.state.tie}
                                 win={this.state.win}
                                 lose={this.state.lose}
-                                recoveredData={this.state.recoveredData}
                                 recoveryKey={this.state.recoveryKey}
                             /> )}
                         />

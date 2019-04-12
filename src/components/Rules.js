@@ -9,7 +9,7 @@ const Rules = () => {
     const renderActions = () => {
         return (
             <React.Fragment>
-                <Link to="" onClick={() => history.goBack()} className="ui button primary">Back</Link>
+                <button onClick={() => history.goBack()} className="ui button primary">Back</button>
             </React.Fragment>
         );
     }
@@ -24,7 +24,7 @@ const Rules = () => {
             title="Rules"
             content={renderContent()}
             actions={renderActions()}
-            onDismiss={() => history.goBack()}
+            onDismiss={() => history.push('/game')}
         />
     );
 };
