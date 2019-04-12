@@ -1,8 +1,10 @@
 
 
+
 .gameDisplay {
+    margin: 0 auto;
     position: relative;
-    width: 70%;
+    max-width: 580px;
     display: flex;
     .interactiveOverlay {
         position: absolute;
