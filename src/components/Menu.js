@@ -17,7 +17,7 @@ const Menu = ({ recoverCurrentGameData, resetGame }) => {
             <div className="menu">
                 <div className="menuOptions">
                     <LinkButton destination={"/"} message={'New Game'} action={resetGame} />
-                    <LinkButton destination={"/rules"} message={'Rules'}/>
+                    <LinkButton destination={"/instructions"} message={'Instructions'}/>
                     <LinkButton destination={"/leaderboard"} message={'Leaderboard'} />
                 </div>
             </div>

@@ -50,7 +50,7 @@ class Login extends Component {
                         <LinkButton destination={this.props.playerNameReady ? 'game' : '/'} message='Play Game'/>
                     </div>
                     <div className="loginPageButtons__buttonContainer">
-                        <LinkButton destination='rules' />
+                        <LinkButton destination='instructions' />
                     </div>
                     <div className="loginPageButtons__buttonContainer">
                         <LinkButton destination='leaderboard' />

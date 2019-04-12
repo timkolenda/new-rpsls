@@ -382,3 +382,15 @@ img {
 .maxedHeight {
   max-height: 70vh;
   overflow: scroll; }
+
+.gameDisplay {
+  position: relative;
+  width: 500px;
+  display: flex; }
+  .gameDisplay .interactiveOverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: red; }

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom
 
 import Login from './Login';
 import Game from './Game';
-import Rules from './Rules';
+import Instructions from './Instructions';
 import Leaderboard from './Leaderboard';
 import Menu from './Menu';
 
@@ -145,7 +145,7 @@ class App extends Component {
                                 resetGame={this.resetGame}
                             />)} 
                         />
-                        <Route path="/rules" render={(props) => ( <Rules /> )}/>
+                        <Route path="/instructions" render={(props) => ( <Instructions /> )}/>
                         <Route path="/leaderboard" render={(props) => ( <Leaderboard /> )}/>
                     </div>
                 </div>
