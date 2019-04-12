@@ -28,11 +28,12 @@
             height: 37%;
         }
         &__trigger {
-            & .borderActive {
+            &.active {
                 border: red 5px solid;
             }
             &:hover {
                 border: red 5px solid;
+                cursor: pointer;
             }
             &--options {
                 width: 18%;

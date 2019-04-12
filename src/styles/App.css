@@ -439,11 +439,12 @@ img {
   width: 100%;
   height: 37%; }
 
-.gameDisplay .interactiveOverlay__trigger .borderActive {
+.gameDisplay .interactiveOverlay__trigger.active {
   border: red 5px solid; }
 
 .gameDisplay .interactiveOverlay__trigger:hover {
-  border: red 5px solid; }
+  border: red 5px solid;
+  cursor: pointer; }
 
 .gameDisplay .interactiveOverlay__trigger--options {
   width: 18%;
