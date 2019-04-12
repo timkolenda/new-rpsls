@@ -48,7 +48,7 @@ class Instructions extends Component {
         return (
             <div className="ruleContent">
                 <div className="ui big message">
-                    Click form more information.
+                    Interact with the game for more information.
                 </div>
                 <div className="instructions">
                     <div className="gameDisplay">
@@ -104,7 +104,7 @@ class Instructions extends Component {
                 title="Instructions"
                 content={this.renderContent()}
                 actions={this.renderActions()}
-                onDismiss={() => history.push('/game')}
+                onDismiss={() => history.goBack()}
             />
         );
     }

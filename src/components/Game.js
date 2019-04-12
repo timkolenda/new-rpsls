@@ -10,7 +10,7 @@ import LinkButton from "./LinkButton";
 
 import options from './options';
 import firebase from './firebase';
-
+import history from './history';
 
 
 const compChoiceArray = [
@@ -55,8 +55,10 @@ class Game extends Component {
 
     componentDidMount(){
         if (this.props.recoveryKey) {
-            console.log('run');
             this.recoverCurrentGameData();
+        }
+        if (!this.props.id) {
+            history.push('/');
         }
     }
 

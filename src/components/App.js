@@ -30,12 +30,8 @@ class App extends Component {
     }
 
     componentDidMount() {
-        if(!this.state.id) {
-            history.push('/');
-        }
-        this.updateWindow()
+        this.updateWindow();
         window.addEventListener("resize", this.updateWindow);
-        
     }
 
     updateWindow = () => {
@@ -49,7 +45,6 @@ class App extends Component {
         this.setState({ [e.target.id]: e.target.value }, () => testValue());
     }
 
-    //Passed in as argument 'testValue' in handleChange - called onChange in Login.js
     checkForPlayerNameReady = () => {
         if (
             this.state.playerName !== "Enter a nickname" 
@@ -107,16 +102,16 @@ class App extends Component {
     }
 
 
+
     render() {
         const backgroundImg = {
             backgroundImage: `linear-gradient(to bottom, rgba(205, 169, 157, 0.7), rgba(205, 169, 157, 0.7)), url(${background})`
         }
-
         return (
             <Router>
                 <div className="app" style={backgroundImg}>
                     <div className="appWrapper">
-                        <Route exact path="/" render={(props) => ( 
+                        <Route exact path="/" exact render={(props) => ( 
                             <Login 
                                 playerName={this.state.playerName}
                                 playerNameReady={this.state.playerNameReady}
@@ -126,7 +121,7 @@ class App extends Component {
                                 checkForPlayerNameReady={this.checkForPlayerNameReady}
                             /> )}
                         />
-                        <Route path="/game" render={(props) => ( 
+                        <Route path="/game" exact render={(props) => ( 
                             <Game 
                                 updateCount={this.updateCount}
                                 windowWidth={this.state.windowWidth}
@@ -139,14 +134,14 @@ class App extends Component {
                                 recoveryKey={this.state.recoveryKey}
                             /> )}
                         />
-                        <Route path="/menu" render={(props) => (
+                        <Route path="/menu" exact render={(props) => (
                             <Menu 
                                 recoverCurrentGameData={this.recoverCurrentGameData} 
                                 resetGame={this.resetGame}
                             />)} 
                         />
-                        <Route path="/instructions" render={(props) => ( <Instructions /> )}/>
-                        <Route path="/leaderboard" render={(props) => ( <Leaderboard /> )}/>
+                        <Route path="/instructions" exact render={(props) => ( <Instructions /> )}/>
+                        <Route path="/leaderboard" exact render={(props) => ( <Leaderboard /> )}/>
                     </div>
                 </div>
             </Router>

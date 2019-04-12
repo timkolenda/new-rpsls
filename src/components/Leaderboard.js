@@ -84,7 +84,7 @@ class Leaderboard extends Component {
                 title="LeaderBoard"
                 content={this.renderContent()}
                 actions={this.renderActions()}
-                onDismiss={() => history.push('/game')}
+                onDismiss={() => history.goBack()}
             />
         );
     }
