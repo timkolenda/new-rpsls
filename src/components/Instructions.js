@@ -6,6 +6,10 @@ import history from './history';
 
 const Instructions = () => {
 
+    const handleClick = () => {
+        console.log(this);
+    }
+
     const renderActions = () => {
         return (
             <React.Fragment>
@@ -24,12 +28,18 @@ const Instructions = () => {
                     <div className="gameDisplay">
                         <img src="../assets/game-display-desktop.png" alt="Image of gameboard."/>
                         <div className="interactiveOverlay">
-                            <div className="interactiveOverlay__trigger interactiveOverlay__trigger--options"></div>
-                            <div className="interactiveOverlay__trigger interactiveOverlay__trigger--userCard"></div>
-                            <div className="interactiveOverlay__trigger interactiveOverlay__trigger--compCard"></div>
-                            <div className="interactiveOverlay__trigger interactiveOverlay__trigger--cardTracker"></div>
-                            <div className="interactiveOverlay__trigger interactiveOverlay__trigger--scoreTracker"></div>
-                            <div className="interactiveOverlay__trigger interactiveOverlay__trigger--menu"></div>
+                            <div onClick={handleClick} className="interactiveOverlay__trigger interactiveOverlay__trigger--options"></div>
+                            <div className="interactiveOverlay__container">
+                                <div className="interactiveOverlay__cardDisplay">
+                                    <div className="interactiveOverlay__trigger interactiveOverlay__trigger--userCard"></div>
+                                    <div className="interactiveOverlay__trigger interactiveOverlay__trigger--compCard"></div>
+                                </div>
+                                <div className="interactiveOverlay__adminArea">
+                                    <div className="interactiveOverlay__trigger interactiveOverlay__trigger--cardTracker"></div>
+                                    <div className="interactiveOverlay__trigger interactiveOverlay__trigger--scoreTracker"></div>
+                                    <div className="interactiveOverlay__trigger interactiveOverlay__trigger--menu"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
