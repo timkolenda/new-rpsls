@@ -26,7 +26,7 @@ class App extends Component {
         id: '',
         windowWidth: 0,
         windowHeight: 0,
-        recoveryKey: '',
+        recoveryDataExists: false,
     }
 
     componentDidMount() {
@@ -84,8 +84,8 @@ class App extends Component {
         this.setState({ [type]: this.state[type] + 1 }, () => this. updateFirebase(type));
     }
 
-    getRecoveryKey = (key) => {
-        this.setState({ recoveryKey: key });
+    setRecoveryDataState = () => {
+        this.setState({ recoveryDataExists: true });
     }
 
     resetGame = () => {
@@ -97,7 +97,7 @@ class App extends Component {
             win: 0,
             lose: 0,
             id: '',
-            recoveryKey: '',
+            recoveryDataExists: '',
         });
     }
 
@@ -127,11 +127,11 @@ class App extends Component {
                                 windowWidth={this.state.windowWidth}
                                 windowHeight={this.state.windowHeight}
                                 id={this.state.id}
-                                getRecoveryKey={this.getRecoveryKey}
+                                setRecoveryDataState={this.setRecoveryDataState}
                                 tie={this.state.tie}
                                 win={this.state.win}
                                 lose={this.state.lose}
-                                recoveryKey={this.state.recoveryKey}
+                                recoveryDataExists={this.state.recoveryDataExists}
                             /> )}
                         />
                         <Route path="/menu" exact render={(props) => (

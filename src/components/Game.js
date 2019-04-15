@@ -54,11 +54,11 @@ class Game extends Component {
     }
 
     componentDidMount(){
-        if (this.props.recoveryKey) {
-            this.recoverCurrentGameData();
-        }
         if (!this.props.id) {
             history.push('/');
+        }
+        if (this.props.recoveryDataExists) {
+            this.recoverCurrentGameData();
         }
     }
 
@@ -170,20 +170,19 @@ class Game extends Component {
             compChoiceArray: this.state.compChoiceArray,
             playerCards: this.state.playerCards,
         }
-        firebase.database().ref().child(this.props.id).push(gameData).then((snap) => {
-            this.props.getRecoveryKey(snap.key);
+        firebase.database().ref().child(this.props.id).child('recoveryData').set(gameData).then((snap) => {
+            this.props.setRecoveryDataState();
         });
     }
 
     recoverCurrentGameData = () => {
-        firebase.database().ref().child(this.props.id).child(this.props.recoveryKey).once('value').then((snapshot) => {
+        firebase.database().ref().child(this.props.id).child('recoveryData').once('value').then((snapshot) => {
             const recoveredData = snapshot.toJSON();
             this.restoreCurrentGame(recoveredData);
         });
     }
 
     restoreCurrentGame = (data) => {
-        console.log(data.compChoiceArray);
         const compChoiceArray = []
         for (let key in data.compChoiceArray) {
             compChoiceArray.push(data.compChoiceArray[key])
@@ -194,8 +193,9 @@ class Game extends Component {
             playerWinCount: this.props.win,
             compWinCount: this.props.lose,
             tieCount: this.props.tie,
-        })
+        });
     }
+
 
 
     renderRoundResult = () => {
