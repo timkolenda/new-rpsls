@@ -40,7 +40,7 @@ class Login extends Component {
         
         return (
             <div className="login">
-                <h2>RPSLS</h2>
+                <h1>RPSLS</h1>
                 <form className="playerNameSubmissionForm" action="#"  onSubmit={this.handleSubmit} >
                     <label className="visuallyhidden" htmlFor="playerName">Please enter your nickname!</label>
                     <input className="playerNameSubmissionForm__input" type="text" id="playerName" value={this.props.playerName} onChange={(e) => this.props.handleChange(e, this.props.checkForPlayerNameReady)} placeholder="Enter a Nickname"/>

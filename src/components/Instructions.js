@@ -7,7 +7,8 @@ import history from './history';
 
 class Instructions extends Component {
     state = {
-        instruction: undefined
+        instruction: undefined,
+        rulesDisplayed: false
     }
 
     handleClick = (e) => {
@@ -17,11 +18,32 @@ class Instructions extends Component {
         this.setState({ instruction: e.target.dataset.instruction });
     }
 
+    toggleContent = () => {
+        this.setState({ rulesDisplayed: !this.state.rulesDisplayed });
+    }
+    
+
     renderActions = () => {
         return (
             <React.Fragment>
+                <button 
+                    onClick={this.toggleContent}
+                    className="ui button primary"
+                >
+                    {this.state.rulesDisplayed ? 'Show Gameboard' : 'Show Rules'}
+                </button>
                 <button onClick={() => history.goBack()} className="ui button primary">Back</button>
             </React.Fragment>
+        );
+    }
+
+    showRules = () => {
+        return (
+            <div className="ruleContent">
+                <div className="ruleImage">
+                    <img src="../../assets/rules.png" alt="Image showing the rules for RPSLS"/>
+                </div>
+            </div>
         );
     }
 
@@ -44,9 +66,9 @@ class Instructions extends Component {
         }
     }
 
-    renderContent = () => {
+    showGameBoard = () => {
         return (
-            <div className="ruleContent">
+            <div className="instructionContent">
                 <div className="ui big message">
                     Interact with the game for more information.
                 </div>
@@ -95,8 +117,16 @@ class Instructions extends Component {
                 </div>
                 {this.renderMessage()}
             </div>
-        )
+        );
     }
+
+    renderContent = () => {
+        if (!this.state.rulesDisplayed) {
+            return this.showGameBoard();
+        } else {
+            return this.showRules();
+        };
+    };
 
     render() {
         return (

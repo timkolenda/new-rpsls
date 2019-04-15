@@ -183,6 +183,9 @@ img {
   display: block;
   text-align: center; }
 
+.login {
+  margin: auto; }
+
 .login .playerNameSubmissionForm {
   display: flex;
   flex-direction: column;
@@ -409,6 +412,18 @@ img {
 .maxedHeight {
   max-height: 70vh;
   overflow: scroll; }
+
+.ruleContent {
+  width: 100%;
+  display: flex;
+  justify-content: center; }
+
+.ruleImage {
+  width: 60%;
+  min-width: 300px; }
+
+.ruleImage img {
+  width: 100%; }
 
 .gameDisplay {
   margin: 0 auto;

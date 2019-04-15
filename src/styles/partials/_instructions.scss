@@ -1,5 +1,17 @@
 
 
+.ruleContent {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .ruleImage {
+        width: 60%;
+        min-width: 300px;
+        img {
+            width: 100%;
+        }
+    }
 
 .gameDisplay {
     margin: 0 auto;
