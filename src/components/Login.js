@@ -1,19 +1,18 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from "react-router-dom";
 import swal from 'sweetalert';
 
 import LinkButton from './LinkButton';
 
+// import history from './history';
+
 
 class Login extends Component {
-    state = { 
-        toGame: false, 
-    }
 
     handleSubmit = (e) => {
         if (this.props.playerNameReady) {
             this.props.handleNewPlayerFormSubmit(e)
-            this.setState({ toGame: true });
+            this.props.history.push('/game');
         } else {
             this.displayInvalidPlayerNameMessage();
         }
@@ -34,10 +33,6 @@ class Login extends Component {
 
 
     render() {  
-        if (this.state.toGame === true){
-            return <Redirect to={'/game'} />
-        }
-        
         return (
             <div className="login">
                 <h1>RPSLS</h1>
@@ -62,4 +57,4 @@ class Login extends Component {
     }
 };
 
-export default Login;
+export default withRouter(Login);

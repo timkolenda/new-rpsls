@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 
 import PlayerOptionList from './PlayerOptionList';
 import CardDisplay from './CardDisplay';
@@ -7,10 +7,10 @@ import Button from './Button';
 import RoundResult from './RoundResult';
 import CardTracker from './CardTracker';
 import LinkButton from "./LinkButton";
+import Login from './Login';
 
 import options from './options';
 import firebase from './firebase';
-import history from './history';
 
 
 const compChoiceArray = [
@@ -54,11 +54,11 @@ class Game extends Component {
     }
 
     componentDidMount(){
-        if (!this.props.id) {
-            history.push('/');
-        }
         if (this.props.recoveryDataExists) {
             this.recoverCurrentGameData();
+        }
+        if (!this.props.playerName) {
+            this.props.history.push('/');
         }
     }
 
@@ -268,4 +268,4 @@ class Game extends Component {
 
 
 
-export default Game;
+export default withRouter(Game);

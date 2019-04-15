@@ -64,7 +64,7 @@ class App extends Component {
         this.addNewPlayerToFirebase();
     }
 
-    addNewPlayerToFirebase = () => {
+    addNewPlayerToFirebase = async () => {
         const newPlayer = {
             name: this.state.playerName,
             win: this.state.win,
@@ -113,6 +113,7 @@ class App extends Component {
                     <div className="appWrapper">
                         <Route exact path="/" exact render={(props) => ( 
                             <Login 
+                                history={history}
                                 playerName={this.state.playerName}
                                 playerNameReady={this.state.playerNameReady}
                                 handleChange={this.handleChange}
@@ -123,6 +124,8 @@ class App extends Component {
                         />
                         <Route path="/game" exact render={(props) => ( 
                             <Game 
+                                history={history}
+                                playerName={this.state.playerName}
                                 updateCount={this.updateCount}
                                 windowWidth={this.state.windowWidth}
                                 windowHeight={this.state.windowHeight}
