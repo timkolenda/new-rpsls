@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-d
 import PlayerOptionList from './PlayerOptionList';
 import CardDisplay from './CardDisplay';
 import Button from './Button';
-import RoundResult from './RoundResult';
+import RoundResult from './Results';
 import CardTracker from './CardTracker';
 import LinkButton from "./LinkButton";
 import Login from './Login';
@@ -154,8 +154,6 @@ class Game extends Component {
         }, 1000);
     }
 
-
-
     getTotalRounds = () => {
         const totalRounds = (this.state.compWinCount + this.state.playerWinCount + this.state.tieCount);
         this.setState({ totalRounds });
@@ -197,16 +195,21 @@ class Game extends Component {
     }
 
 
-
-    renderRoundResult = () => {
-        setTimeout(() => {
-            return (
-                <div className="game__roundResult">
-                    <RoundResult roundResult={this.state.roundResult} />
-                </div>
-            );
-        }, 1000)
+    triggerEndGame = (totalRounds) => {
+        if (totalRounds === 2) {
+            this.props.history.push('/results');
+        }
     }
+
+    // renderRoundResult = () => {
+    //     setTimeout(() => {
+    //         return (
+    //             <div className="game__roundResult">
+    //                 <RoundResult roundResult={this.state.roundResult} />
+    //             </div>
+    //         );
+    //     }, 1000)
+    // }
 
     resetForNextRound = () => {
         this.setState({
@@ -215,7 +218,7 @@ class Game extends Component {
             playerChoice: '',
             compChoice: '',
             compChoiceNumber: '',
-        });
+        }, () => this.triggerEndGame(this.state.totalRounds));
     }
 
     renderAdmin = () => {
@@ -239,7 +242,7 @@ class Game extends Component {
     render(){
         return (
             <div className="game">
-                {this.state.roundResult ? this.renderRoundResult() : ''}
+                {/* {this.state.roundResult ? this.renderRoundResult() : ''} */}
                 <div className="game__cardArea">
                     <PlayerOptionList 
                         options={options} 

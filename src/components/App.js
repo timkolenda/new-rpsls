@@ -7,6 +7,7 @@ import Game from './Game';
 import Instructions from './Instructions';
 import Leaderboard from './Leaderboard';
 import Menu from './Menu';
+import Results from './Results';
 
 import background from '../backgroundImage/background.png';
 import options from './options';
@@ -101,6 +102,8 @@ class App extends Component {
         });
     }
 
+    
+
 
 
     render() {
@@ -135,6 +138,7 @@ class App extends Component {
                                 win={this.state.win}
                                 lose={this.state.lose}
                                 recoveryDataExists={this.state.recoveryDataExists}
+
                             /> )}
                         />
                         <Route path="/menu" exact render={(props) => (
@@ -145,6 +149,11 @@ class App extends Component {
                         />
                         <Route path="/instructions" exact render={(props) => ( <Instructions /> )}/>
                         <Route path="/leaderboard" exact render={(props) => ( <Leaderboard /> )}/>
+                        <Route path="/results" exact render={(props) => (
+                            <Results 
+                                resetGame={this.resetGame}
+                            />)} 
+                        />
                     </div>
                 </div>
             </Router>
