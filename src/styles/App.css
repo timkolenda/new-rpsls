@@ -154,6 +154,9 @@ body {
 img {
   width: 100%; }
 
+h1 {
+  font-size: 80px; }
+
 .rockClass {
   width: 80%; }
 
@@ -194,7 +197,6 @@ img {
 .login .playerNameSubmissionForm__input {
   width: 90%;
   padding: 13px 50px;
-  text-transform: uppercase;
   border: none;
   border-radius: 50px;
   text-align: center;
@@ -333,7 +335,8 @@ img {
     display: flex; }
   .game .cardTracker .counterList {
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    margin: 5px; }
   .game .cardTracker .listItem {
     height: 30px;
     display: flex; }
@@ -428,7 +431,7 @@ img {
 .gameDisplay {
   margin: 0 auto;
   position: relative;
-  max-width: 580px;
+  max-width: 500px;
   display: flex; }
 
 .gameDisplay .interactiveOverlay {

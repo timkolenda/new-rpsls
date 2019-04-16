@@ -54,6 +54,7 @@ class Game extends Component {
     }
 
     componentDidMount(){
+        // this.saveCurrentGameData()
         if (this.props.recoveryDataExists) {
             this.recoverCurrentGameData();
         }
@@ -87,6 +88,7 @@ class Game extends Component {
     }
 
     resolveSetCompChoice = () => {
+
         this.spendCompCard();
         this.getCardImage(this.state.compChoice, 'comp');
     }
@@ -196,14 +198,15 @@ class Game extends Component {
 
 
     triggerEndGame = (totalRounds) => {
+        console.log(totalRounds);
         if (totalRounds === 25) {
-            console.log(totalRounds);
             this.props.history.push('/results');
         }
     }
 
 
     resetForNextRound = () => {
+        this.saveCurrentGameData();
         this.setState({
             playerCardFlipped: false,
             compCardFlipped: false,

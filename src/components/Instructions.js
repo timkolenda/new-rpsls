@@ -50,17 +50,17 @@ class Instructions extends Component {
     renderMessage = () => {
         switch (this.state.instruction) {
             case 'options':
-                return <div className="ui green message">Begin each round by choosing which card your are going to play.</div>
+                return <div className="ui green message large">Begin each round by choosing which card your are going to play.</div>
             case 'userCard':
-                return <div className="ui green message">Cards you play will be displayed here.</div>
+                return <div className="ui green message large">Cards you play will be displayed here.</div>
             case 'compCard':
-                return <div className="ui green message">Cards the computer plays will be displayed here.</div>
+                return <div className="ui green message large">Cards the computer plays will be displayed here.</div>
             case 'cardTracker':
-                return <div className="ui green message">Keep track of the remaining cards in your deck and your opponents deck using this tracker.</div>
+                return <div className="ui green message large">Keep track of the remaining cards in your deck and your opponents deck using this tracker.</div>
             case 'scoreTracker':
-                return <div className="ui green message">Track your current score here.</div>
+                return <div className="ui green message large">Track your current score here.</div>
             case 'menu':
-                return <div className="ui green message">Navigate to the menu for more actions.</div>
+                return <div className="ui green message large">Navigate to the menu for more actions.</div>
             default: 
                 return;
         }
@@ -69,7 +69,7 @@ class Instructions extends Component {
     showGameBoard = () => {
         return (
             <div className="instructionContent">
-                <div className="ui big message">
+                <div className="ui big message large">
                     Interact with the game for more information.
                 </div>
                 <div className="instructions">

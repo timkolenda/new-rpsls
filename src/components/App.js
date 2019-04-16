@@ -65,7 +65,7 @@ class App extends Component {
         this.addNewPlayerToFirebase();
     }
 
-    addNewPlayerToFirebase = async () => {
+    addNewPlayerToFirebase = () => {
         const newPlayer = {
             name: this.state.playerName,
             win: this.state.win,
@@ -154,7 +154,7 @@ class App extends Component {
                                 resetGame={this.resetGame}
                                 tieCount={this.state.tie}
                                 playerWinCount={this.state.win}
-                                playerLoseCount={this.state.lose}
+                                compWinCount={this.state.lose}
                                 playerName={this.state.playerName}
                                 history={history}
                     />)} 

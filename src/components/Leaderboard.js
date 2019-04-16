@@ -81,7 +81,7 @@ class Leaderboard extends Component {
     render(){
         return (
             <Modal
-                title="LeaderBoard"
+                title="Leaderboard"
                 content={this.renderContent()}
                 actions={this.renderActions()}
                 onDismiss={() => history.goBack()}
