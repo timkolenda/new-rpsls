@@ -23,7 +23,7 @@ const Menu = ({ recoverCurrentGameData, resetGame }) => {
     const renderActions = () => {
         return (
             <React.Fragment>
-                <Link to="/game" className="ui button primary">Back</Link>
+                <Link to="/game" className="ui button primary massive">Back</Link>
             </React.Fragment>
         );
     }

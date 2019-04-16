@@ -196,20 +196,12 @@ class Game extends Component {
 
 
     triggerEndGame = (totalRounds) => {
-        if (totalRounds === 2) {
+        if (totalRounds === 25) {
+            console.log(totalRounds);
             this.props.history.push('/results');
         }
     }
 
-    // renderRoundResult = () => {
-    //     setTimeout(() => {
-    //         return (
-    //             <div className="game__roundResult">
-    //                 <RoundResult roundResult={this.state.roundResult} />
-    //             </div>
-    //         );
-    //     }, 1000)
-    // }
 
     resetForNextRound = () => {
         this.setState({
@@ -242,7 +234,6 @@ class Game extends Component {
     render(){
         return (
             <div className="game">
-                {/* {this.state.roundResult ? this.renderRoundResult() : ''} */}
                 <div className="game__cardArea">
                     <PlayerOptionList 
                         options={options} 

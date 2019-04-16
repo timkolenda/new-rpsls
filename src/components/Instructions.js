@@ -28,11 +28,11 @@ class Instructions extends Component {
             <React.Fragment>
                 <button 
                     onClick={this.toggleContent}
-                    className="ui button primary"
+                    className="ui button primary massive"
                 >
                     {this.state.rulesDisplayed ? 'Show Gameboard' : 'Show Rules'}
                 </button>
-                <button onClick={() => history.goBack()} className="ui button primary">Back</button>
+                <button onClick={() => history.goBack()} className="ui button primary massive">Back</button>
             </React.Fragment>
         );
     }

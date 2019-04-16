@@ -152,8 +152,13 @@ class App extends Component {
                         <Route path="/results" exact render={(props) => (
                             <Results 
                                 resetGame={this.resetGame}
-                            />)} 
-                        />
+                                tieCount={this.state.tie}
+                                playerWinCount={this.state.win}
+                                playerLoseCount={this.state.lose}
+                                playerName={this.state.playerName}
+                                history={history}
+                    />)} 
+                />
                     </div>
                 </div>
             </Router>

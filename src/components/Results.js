@@ -3,12 +3,31 @@ import { withRouter } from 'react-router-dom'
 
 import LinkButton from './LinkButton';
 
-const Result = ({ resetGame }) => {
+const Result = ({ resetGame, playerWinCount=0, compWinCount=0, tieCount=0, playerName, history }) => {
+    if (!playerName) {
+        history.push('/');
+    }
     return (
-        <div>
-            <div>
-                Result
-            </div>
+        <div className="results">
+            <table className="ui celled large table padded unstackable">
+                <thead>
+                    <th className="center aligned" colspan="2">{playerName}</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Games Won</td>
+                        <td className="center aligned">{playerWinCount}</td>
+                    </tr>
+                    <tr>
+                        <td>Games Lost</td>
+                        <td className="center aligned">{compWinCount}</td>
+                    </tr>
+                    <tr>
+                        <td>Games Tied</td>
+                        <td className="center aligned">{tieCount}</td>
+                    </tr>
+                </tbody>
+            </table>
             <LinkButton destination={"/"} message={'New Game'} action={resetGame} />
             <LinkButton destination={"/leaderboard"} message={'Leaderboard'} />
         </div>

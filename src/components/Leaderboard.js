@@ -51,7 +51,7 @@ class Leaderboard extends Component {
     renderContent = () => { 
         return (
             <div className="leaderboard">
-                <table className="ui celled table unstackable">
+                <table className="ui celled large table unstackable">
                     <thead>
                         <tr>
                             <th className="rankColumn">Rank</th>
@@ -71,7 +71,7 @@ class Leaderboard extends Component {
     renderActions = () => {
         return (
             <React.Fragment>
-                <button onClick={() => history.goBack()} className="ui button primary">Back</button>
+                <button onClick={() => history.goBack()} className="ui button primary massive">Back</button>
             </React.Fragment>
         );
     }
