@@ -33,7 +33,7 @@ class Card extends Component {
                         className={`card__display card__display--back`} 
                         style={window.innerWidth < 800 ? squareStyle : null} 
                     >
-                        <img src='' alt='' />
+                        <img src='../../assets/background.png' alt='' />
                     </div>
                     <div 
                         className={`card__display card__display--front`} 
