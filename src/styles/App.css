@@ -186,6 +186,20 @@ h1 {
   display: block;
   text-align: center; }
 
+.linkButton.menu {
+  display: flex;
+  margin-bottom: 0; }
+
+.linkButton.menu .button__target {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 100%;
+  align-self: flex-end;
+  margin-bottom: none;
+  border-radius: 5px; }
+
 .login {
   margin: auto; }
 
@@ -252,13 +266,15 @@ h1 {
 
 .game .adminArea {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  overflow: scroll; }
 
 .game .cardTracker {
   display: flex;
   border: 1px solid lightgrey;
   border-radius: 5px;
-  padding: 5px; }
+  padding: 4px;
+  margin-right: 10px; }
 
 .game .cardTracker .counterList {
   display: flex;
@@ -277,8 +293,8 @@ h1 {
   align-items: center; }
 
 .game .cardTracker .listItem__counter .bubble {
-  height: 10px;
-  width: 10px;
+  height: 13px;
+  width: 13px;
   border: 1px solid #e6e6e6;
   border-radius: 50%;
   margin-right: 3px; }

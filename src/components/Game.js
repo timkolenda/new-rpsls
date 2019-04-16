@@ -54,7 +54,6 @@ class Game extends Component {
     }
 
     componentDidMount(){
-        // this.saveCurrentGameData()
         if (this.props.recoveryDataExists) {
             this.recoverCurrentGameData();
         }
@@ -226,7 +225,12 @@ class Game extends Component {
                     compWinCount={this.state.compWinCount}
                     tieCount={this.state.tieCount}
             />
-                <Link to="/menu" onClick={this.saveCurrentGameData}>Menu</Link>
+                <LinkButton 
+                    destination={'menu'} 
+                    action={this.saveCurrentGameData} 
+                    message={<i class="fas fa-bars"></i>} 
+                    customClass={'menu'}
+                />
             </div>
         );
     }
