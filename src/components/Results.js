@@ -11,7 +11,9 @@ const Result = ({ resetGame, playerWinCount=0, compWinCount=0, tieCount=0, playe
         <div className="results">
             <table className="ui celled large table padded unstackable">
                 <thead>
-                    <th className="center aligned" colspan="2">{playerName}</th>
+                    <tr>
+                        <th colSpan="2" className="center aligned">{playerName}</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>

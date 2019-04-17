@@ -11,8 +11,10 @@ class PlayerOptionItem extends Component{
 
     handleClick = () => {
         this.props.getPlayerChoice(this.props.type);
-        this.props.showCard('player');
+        this.props.disableButtonDuringAnimation();
     }
+
+    
     
     updateDimensions = () => {
         const windowSize = window.innerWidth;
@@ -27,11 +29,16 @@ class PlayerOptionItem extends Component{
             height: this.state.squareDimension
         }
 
-        const disabled = !this.props.playerCards[this.props.type];
+        let disabled = false;
+        if (this.props.tempDisabled) {
+            disabled = true;
+        } else {
+            disabled = !this.props.playerCards[this.props.type];
+        }
 
         return (
             <button 
-                className={`playerOptionItem ${disabled ? 'disabled' : ''}`}  
+                className={`playerOptionItem`}  
                 onClick={this.handleClick} 
                 style={window.innerWidth < 750 ? squareStyle : null} 
                 disabled={disabled}>

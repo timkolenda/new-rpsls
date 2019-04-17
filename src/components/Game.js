@@ -64,22 +64,24 @@ class Game extends Component {
     }
 
     getCardImage = async (type, cardHolder) => {
+        if (type === 'spock') {
+            type = 'space';
+        }
         const res = await unsplash.get('search/photos', {
             params: { 
                 query: type, 
-                orientation: 'squarish' 
+                // orientation: 'squarish' 
             },
         });
         const randomNumber = Math.floor(Math.random() * res.data.results.length);
         const cardImage = res.data.results[randomNumber].urls.regular;
-        this.setState({ [`${cardHolder}CardImage`]: cardImage });
+        this.setState({ [`${cardHolder}CardImage`]: cardImage }, () => this.showCard(`${cardHolder}`));
     }
 
     showCard = (cardHolder) => this.setState({ [`${cardHolder}CardFlipped`]: true });
     
     getPlayerChoice = (playerChoice) => this.setState({ playerChoice }, () => {
         this.getCardImage(this.state.playerChoice, 'player');
-        // this.getCardImageSet(this.state.playerChoice, 'player');
         this.spendPlayerCard();
         this.getCompChoice();
     });
@@ -90,7 +92,6 @@ class Game extends Component {
             let compChoiceNumber = Math.floor(Math.random() * this.state.compChoiceArray.length);
             const compChoice = Object.keys(this.state.compChoiceArray[compChoiceNumber])[0];
             this.setState({ compChoice, compChoiceNumber }, () => {this.resolveSetCompChoice()});
-            this.showCard('comp');
         }, 1000)
     }
 
@@ -159,7 +160,7 @@ class Game extends Component {
             this.getTotalRounds();
             this.resetForNextRound();
             this.setRoundResult(roundResult);
-        }, 1000);
+        }, 2000);
     }
 
     getTotalRounds = () => {
@@ -204,7 +205,6 @@ class Game extends Component {
 
 
     triggerEndGame = (totalRounds) => {
-        console.log(totalRounds);
         if (totalRounds === 25) {
             this.props.history.push('/results');
         }
@@ -252,7 +252,6 @@ class Game extends Component {
                     <PlayerOptionList 
                         options={options} 
                         getPlayerChoice={this.getPlayerChoice}
-                        showCard={this.showCard}
                         playerCards={this.state.playerCards}
                     />
                     <div className="cardDisplayContainer">

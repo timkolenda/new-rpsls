@@ -90,7 +90,6 @@ class App extends Component {
     }
 
     resetGame = () => {
-        console.log('run');
         this.setState({
             playerName: '',
             playerNameReady: false,
