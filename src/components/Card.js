@@ -14,6 +14,15 @@ class Card extends Component {
         this.setState({ squareDimension });
     }
 
+    renderVictoryMessage = () => {
+        
+        return (
+            <div className="card__victoryMessage">
+
+            </div>
+        )
+    }
+
     render() {
         const squareStyle = {
             width: this.state.squareDimension,
@@ -33,13 +42,14 @@ class Card extends Component {
                         className={`card__display card__display--back`} 
                         style={window.innerWidth < 750 ? squareStyle : null} 
                     >
-                        <img src='../../assets/background.png' alt='' />
+                        <img src='../../assets/background.png' alt='image for the back of the card' />
                     </div>
                     <div 
                         className={`card__display card__display--front`} 
                         style={window.innerWidth < 750 ? squareStyle : null} 
                     >
-                        <img src={this.props.image} alt='' />
+                        <img src={this.props.image} alt='played card image' />
+                        {this.renderVictoryMessage()}
                     </div>
                 </div>
             </div>

@@ -137,20 +137,20 @@ class Game extends Component {
                 this.props.updateCount('win');
                 this.setState({
                     playerWinCount: this.state.playerWinCount + 1,
-                    roundResult: 'You Win!'
-                }, () => this.resolveRound('You Win!'));
+                    roundResult: 'Win'
+                }, () => this.resolveRound('Win'));
             } else if (this.state.playerChoice === this.state.compChoice) {
                 this.props.updateCount('tie');
                 this.setState({
                     tieCount: this.state.tieCount + 1,
-                    roundResult: 'It\'s a Tie!'
-                }, () => this.resolveRound('It\'s a Tie!'));
+                    roundResult: 'Tie'
+                }, () => this.resolveRound('Tie'));
             } else {
                 this.props.updateCount('lose');
                 this.setState({
                     compWinCount: this.state.compWinCount + 1,
-                    roundResult: 'You Lose!'
-                }, () => this.resolveRound('You Lose!'));
+                    roundResult: 'Lose'
+                }, () => this.resolveRound('Lose'));
             }
         }
     }
@@ -159,7 +159,7 @@ class Game extends Component {
         setTimeout((roundResult) => {
             this.getTotalRounds();
             this.resetForNextRound();
-            this.setRoundResult(roundResult);
+            // this.setRoundResult(roundResult);
         }, 2000);
     }
 
@@ -168,9 +168,9 @@ class Game extends Component {
         this.setState({ totalRounds });
     };
 
-    setRoundResult = (roundResult) => {
-        this.setState({ roundResult });
-    }
+    // setRoundResult = (roundResult) => {
+    //     this.setState({ roundResult });
+    // }
 
     saveCurrentGameData = () => {
         const gameData = {
@@ -219,6 +219,7 @@ class Game extends Component {
             playerChoice: '',
             compChoice: '',
             compChoiceNumber: '',
+            roundResult: ''
         }, () => this.triggerEndGame(this.state.totalRounds));
     }
 
@@ -263,6 +264,7 @@ class Game extends Component {
                             compChoice={this.state.compChoice}
                             playerCardImage={this.state.playerCardImage}
                             compCardImage={this.state.compCardImage}
+                            roundResult={this.state.roundResult}
                         />
                         {window.innerWidth < 750 ? null : this.renderAdmin()}
                     </div>

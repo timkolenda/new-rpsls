@@ -101,10 +101,6 @@ class App extends Component {
         });
     }
 
-    
-
-
-
     render() {
         const backgroundImg = {
             backgroundImage: `linear-gradient(to bottom, rgba(205, 169, 157, 0.7), rgba(205, 169, 157, 0.7)), url(${background})`
