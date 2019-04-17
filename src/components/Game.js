@@ -9,8 +9,8 @@ import CardTracker from './CardTracker';
 import LinkButton from "./LinkButton";
 import Login from './Login';
 
-import options from './options';
-import firebase from './firebase';
+import options from '../utils/options';
+import firebase from '../database/firebase/firebase';
 
 
 const compChoiceArray = [
@@ -258,10 +258,10 @@ class Game extends Component {
                             playerCardImage={this.state.playerCardImage}
                             compCardImage={this.state.compCardImage}
                         />
-                        {window.innerWidth < 800 ? null : this.renderAdmin()}
+                        {window.innerWidth < 750 ? null : this.renderAdmin()}
                     </div>
                 </div>
-                {window.innerWidth < 800 ? this.renderAdmin() : null}
+                {window.innerWidth < 750 ? this.renderAdmin() : null}
             </div>
         );
     }

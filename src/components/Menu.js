@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Modal from './Modal';
 import LinkButton from './LinkButton';
 
-import history from './history';
+import history from '../utils/history';
 
 const Menu = ({ recoverCurrentGameData, resetGame }) => {
 

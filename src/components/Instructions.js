@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 
 import Modal from './Modal';
-import history from './history';
+import history from '../utils/history';
 
 
 class Instructions extends Component {

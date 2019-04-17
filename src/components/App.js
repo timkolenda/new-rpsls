@@ -10,9 +10,9 @@ import Menu from './Menu';
 import Results from './Results';
 
 import background from '../backgroundImage/background.png';
-import options from './options';
-import firebase from './firebase';
-import history from './history';
+import options from '../utils/options';
+import firebase from '../database/firebase/firebase';
+import history from '../utils/history';
 
 
 const dbRef = firebase.database().ref();

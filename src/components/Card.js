@@ -23,21 +23,21 @@ class Card extends Component {
         return (
             <div 
                 className="card" 
-                style={window.innerWidth < 800 ? squareStyle : null} 
+                style={window.innerWidth < 750 ? squareStyle : null} 
             >
                 <div 
                     className={`card__cardFlipper ${this.props.flipped ? 'card__cardFlipper--active' : ''}`} 
-                    style={window.innerWidth < 800 ? squareStyle : null} 
+                    style={window.innerWidth < 750 ? squareStyle : null} 
                 >
                     <div 
                         className={`card__display card__display--back`} 
-                        style={window.innerWidth < 800 ? squareStyle : null} 
+                        style={window.innerWidth < 750 ? squareStyle : null} 
                     >
                         <img src='../../assets/background.png' alt='' />
                     </div>
                     <div 
                         className={`card__display card__display--front`} 
-                        style={window.innerWidth < 800 ? squareStyle : null} 
+                        style={window.innerWidth < 750 ? squareStyle : null} 
                     >
                         <img src={this.props.image} alt='' />
                     </div>

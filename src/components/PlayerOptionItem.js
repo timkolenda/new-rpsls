@@ -33,7 +33,7 @@ class PlayerOptionItem extends Component{
             <button 
                 className={`playerOptionItem ${disabled ? 'disabled' : ''}`}  
                 onClick={this.handleClick} 
-                style={window.innerWidth < 800 ? squareStyle : null} 
+                style={window.innerWidth < 750 ? squareStyle : null} 
                 disabled={disabled}>
                 <div>
                     <img src={this.props.image} alt={this.props.alt} className={this.props.customClass}/>

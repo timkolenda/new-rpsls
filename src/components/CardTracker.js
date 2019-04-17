@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import options from './options';
+import options from '../utils/options';
 
 
 const CardTracker = ({ compCardsArray, playerCards, playerWinCount, compWinCount, tieCount }) => {

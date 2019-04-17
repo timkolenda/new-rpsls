@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 
-import firebase from './firebase';
+import firebase from '../database/firebase/firebase';
 
 import Modal from './Modal';
-import history from './history';
+import history from '../utils/history';
 
 const dbRef = firebase.database().ref();
 
