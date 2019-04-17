@@ -11,6 +11,7 @@ import Login from './Login';
 
 import options from '../utils/options';
 import firebase from '../database/firebase/firebase';
+import unsplash from '../api/unsplash';
 
 
 const compChoiceArray = [
@@ -50,7 +51,7 @@ class Game extends Component {
         compWinCount: 0,
         tieCount: 0,
         roundResult: '',
-        totalRounds: 0
+        totalRounds: 0,
     }
 
     componentDidMount(){
@@ -62,20 +63,27 @@ class Game extends Component {
         }
     }
 
+    getCardImage = async (type, cardHolder) => {
+        const res = await unsplash.get('search/photos', {
+            params: { 
+                query: type, 
+                orientation: 'squarish' 
+            },
+        });
+        const randomNumber = Math.floor(Math.random() * res.data.results.length);
+        const cardImage = res.data.results[randomNumber].urls.regular;
+        this.setState({ [`${cardHolder}CardImage`]: cardImage });
+    }
 
     showCard = (cardHolder) => this.setState({ [`${cardHolder}CardFlipped`]: true });
     
     getPlayerChoice = (playerChoice) => this.setState({ playerChoice }, () => {
         this.getCardImage(this.state.playerChoice, 'player');
+        // this.getCardImageSet(this.state.playerChoice, 'player');
         this.spendPlayerCard();
         this.getCompChoice();
     });
 
-    getCardImage = (choice, cardHolder) => {
-        const choiceObject = options.filter((option) => option.type === choice); 
-        const cardImage = choiceObject[0].img;
-        this.setState({ [`${cardHolder}CardImage`]: cardImage });
-    }
 
     getCompChoice = () => {
         setTimeout(() => {
@@ -87,7 +95,6 @@ class Game extends Component {
     }
 
     resolveSetCompChoice = () => {
-
         this.spendCompCard();
         this.getCardImage(this.state.compChoice, 'comp');
     }
@@ -228,7 +235,7 @@ class Game extends Component {
                 <LinkButton 
                     destination={'menu'} 
                     action={this.saveCurrentGameData} 
-                    message={<i class="fas fa-bars"></i>} 
+                    message={<i className="fas fa-bars"></i>} 
                     customClass={'menu'}
                 />
             </div>
