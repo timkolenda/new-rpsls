@@ -106,7 +106,7 @@ class App extends Component {
             backgroundImage: `linear-gradient(to bottom, rgba(205, 169, 157, 0.7), rgba(205, 169, 157, 0.7)), url(${background})`
         }
         return (
-            <Router>
+            <Router basename="/new-rpsls">
                 <div className="app" style={backgroundImg}>
                     <div className="appWrapper">
                         <Route exact path="/" exact render={(props) => ( 
