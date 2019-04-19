@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import { HashRouter as Router, Route, Link, Redirect } from "react-router-dom";
 
 import Login from './Login';
 import Game from './Game';
