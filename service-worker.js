@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/timkolenda/new-rpsls.git/precache-manifest.ddee83deed67b029c5ada43e0c535f87.js"
+  "/timkolenda/new-rpsls/precache-manifest.9972fb237bebc5d7559c3dd9f6f99d2a.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/timkolenda/new-rpsls.git/index.html", {
+workbox.routing.registerNavigationRoute("/timkolenda/new-rpsls/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
