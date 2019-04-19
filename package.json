@@ -2,7 +2,7 @@
   "name": "rpsls",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/timkolenda/new-rpsls.git",
+  "homepage": "https://github.com/timkolenda/new-rpsls",
   "dependencies": {
     "@sweetalert/with-react": "^0.1.1",
     "all": "0.0.0",
