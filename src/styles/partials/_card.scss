@@ -13,7 +13,7 @@
             transform: rotateY(180deg);
         }    
     }
-    .card__display {
+    &__display {
         width: 300px;
         height: 300px;
         backface-visibility: hidden;
@@ -42,7 +42,22 @@
             // overflow: hidden;
             border-radius: 5px;
         }
-    }    
+    }
+    &__victoryMessage {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 30px;
+        text-transform: capitalize;
+        line-height: 2;
+        font-weight: bold;
+    }
 }
 
 

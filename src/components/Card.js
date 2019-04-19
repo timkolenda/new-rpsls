@@ -15,12 +15,11 @@ class Card extends Component {
     }
 
     renderVictoryMessage = () => {
-        
         return (
             <div className="card__victoryMessage">
-
+                {this.props.winStatement}
             </div>
-        )
+        );
     }
 
     render() {
@@ -49,6 +48,7 @@ class Card extends Component {
                         style={window.innerWidth < 750 ? squareStyle : null} 
                     >
                         <img src={this.props.image} alt='played card image' />
+                        {/* {setTimeout(() => {this.renderVictoryMessage()}, 500)} */}
                         {this.renderVictoryMessage()}
                     </div>
                 </div>
