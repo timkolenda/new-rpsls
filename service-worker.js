@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/timkolenda/new-rpsls/precache-manifest.9972fb237bebc5d7559c3dd9f6f99d2a.js"
+  "/timkolenda/new-rpsls/precache-manifest.dae26b708791bf7ee8dad6ef875b3f06.js"
 );
 
 workbox.clientsClaim();
