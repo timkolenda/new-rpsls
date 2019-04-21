@@ -29,7 +29,7 @@ class App extends Component {
         windowHeight: 0,
         recoveryDataExists: false,
     }
-
+    
     componentDidMount() {
         this.updateWindow();
         window.addEventListener("resize", this.updateWindow);
@@ -106,57 +106,55 @@ class App extends Component {
             backgroundImage: `linear-gradient(to bottom, rgba(205, 169, 157, 0.7), rgba(205, 169, 157, 0.7)), url(${background})`
         }
         return (
-            <Router basename="/new-rpsls">
-                <div className="app" style={backgroundImg}>
-                    <div className="appWrapper">
-                        <Route exact path="/" exact render={(props) => ( 
-                            <Login 
-                                history={history}
-                                playerName={this.state.playerName}
-                                playerNameReady={this.state.playerNameReady}
-                                handleChange={this.handleChange}
-                                handleNewPlayerFormSubmit={this.handleNewPlayerFormSubmit}
-                                addNewPlayerToFirebase={this.addNewPlayerToFirebase}
-                                checkForPlayerNameReady={this.checkForPlayerNameReady}
-                            /> )}
-                        />
-                        <Route path="/game" exact render={(props) => ( 
-                            <Game 
-                                history={history}
-                                playerName={this.state.playerName}
-                                updateCount={this.updateCount}
-                                windowWidth={this.state.windowWidth}
-                                windowHeight={this.state.windowHeight}
-                                id={this.state.id}
-                                setRecoveryDataState={this.setRecoveryDataState}
-                                tie={this.state.tie}
-                                win={this.state.win}
-                                lose={this.state.lose}
-                                recoveryDataExists={this.state.recoveryDataExists}
+            <div className="app" style={backgroundImg}>
+                <div className="appWrapper">
+                    <Route exact path="/" exact render={(props) => ( 
+                        <Login 
+                            history={history}
+                            playerName={this.state.playerName}
+                            playerNameReady={this.state.playerNameReady}
+                            handleChange={this.handleChange}
+                            handleNewPlayerFormSubmit={this.handleNewPlayerFormSubmit}
+                            addNewPlayerToFirebase={this.addNewPlayerToFirebase}
+                            checkForPlayerNameReady={this.checkForPlayerNameReady}
+                        /> )}
+                    />
+                    <Route path="/game" exact render={(props) => ( 
+                        <Game 
+                            history={history}
+                            playerName={this.state.playerName}
+                            updateCount={this.updateCount}
+                            windowWidth={this.state.windowWidth}
+                            windowHeight={this.state.windowHeight}
+                            id={this.state.id}
+                            setRecoveryDataState={this.setRecoveryDataState}
+                            tie={this.state.tie}
+                            win={this.state.win}
+                            lose={this.state.lose}
+                            recoveryDataExists={this.state.recoveryDataExists}
 
-                            /> )}
-                        />
-                        <Route path="/menu" exact render={(props) => (
-                            <Menu 
-                                recoverCurrentGameData={this.recoverCurrentGameData} 
-                                resetGame={this.resetGame}
-                            />)} 
-                        />
-                        <Route path="/instructions" exact render={(props) => ( <Instructions /> )}/>
-                        <Route path="/leaderboard" exact render={(props) => ( <Leaderboard /> )}/>
-                        <Route path="/results" exact render={(props) => (
-                            <Results 
-                                resetGame={this.resetGame}
-                                tieCount={this.state.tie}
-                                playerWinCount={this.state.win}
-                                compWinCount={this.state.lose}
-                                playerName={this.state.playerName}
-                                history={history}
-                    />)} 
-                />
-                    </div>
+                        /> )}
+                    />
+                    <Route path="/menu" exact render={(props) => (
+                        <Menu 
+                            recoverCurrentGameData={this.recoverCurrentGameData} 
+                            resetGame={this.resetGame}
+                        />)} 
+                    />
+                    <Route path="/instructions" exact render={(props) => ( <Instructions /> )}/>
+                    <Route path="/leaderboard" exact render={(props) => ( <Leaderboard /> )}/>
+                    <Route path="/results" exact render={(props) => (
+                        <Results 
+                            resetGame={this.resetGame}
+                            tieCount={this.state.tie}
+                            playerWinCount={this.state.win}
+                            compWinCount={this.state.lose}
+                            playerName={this.state.playerName}
+                            history={history}
+                        />)} 
+                    />
                 </div>
-            </Router>
+            </div>
         );
     };
 }
