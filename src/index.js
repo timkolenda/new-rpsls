@@ -4,12 +4,13 @@ import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route, Link, Redirect } from "react-router-dom";
 
 import App from './components/App';
-import Test from './components/Test';
+
+import * as serviceWorker from './serviceWorker';
 
 
 
 ReactDOM.render(
-    <Router basename="new-rpsls" style={'background: red'}>
+    <Router>
         <App />
     </Router>, 
 document.querySelector('#root'));
