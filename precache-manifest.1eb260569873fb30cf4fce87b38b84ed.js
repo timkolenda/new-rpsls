@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "878033e4997422e7dd4a",
+    "revision": "1f2eae09467bbe5fda30",
     "url": "/timkolenda/new-rpsls/static/css/main.a9a0afe0.chunk.css"
   },
   {
-    "revision": "878033e4997422e7dd4a",
-    "url": "/timkolenda/new-rpsls/static/js/main.878033e4.chunk.js"
+    "revision": "1f2eae09467bbe5fda30",
+    "url": "/timkolenda/new-rpsls/static/js/main.1f2eae09.chunk.js"
   },
   {
     "revision": "502f3e06a8782a3c4e46",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/timkolenda/new-rpsls/static/media/background.ce8f19bd.png"
   },
   {
-    "revision": "9d1577d9d2728af1df6422806cb590c9",
+    "revision": "b7e42cbd6a69167d7cd10d51c5192281",
     "url": "/timkolenda/new-rpsls/index.html"
   }
 ];
